@@ -1,0 +1,46 @@
+$ python 05_openui_lang/2_declarative/demo.py
+
+POST api/run  {"prompt":"Plan a 9-unit evening-friendly spring semester for me"}
+  <- chunk x33  (first: {"text":"root = Stack([title, sum"})
+  <- trace {"text":"program valid"}
+  <- end {}
+POST api/action  {"name":"avoid_friday","context":{}}
+  <- trace {"text":"action avoid_friday: the model answers with replacement statements"}
+  <- chunk x18  (first: {"text":"rows = [[\"CMPE 280\", \"We"})
+  <- trace {"text":"program valid"}
+  <- end {}
+
+browser console:
+  [genux] 0 statement(s) parsed, 0 placeholder(s) on screen
+  [genux] 1 statement(s) parsed, 5 placeholder(s) on screen
+  [genux] 2 statement(s) parsed, 4 placeholder(s) on screen
+  [genux] 3 statement(s) parsed, 6 placeholder(s) on screen
+  [genux] 4 statement(s) parsed, 5 placeholder(s) on screen
+  [genux] 5 statement(s) parsed, 4 placeholder(s) on screen
+  [genux] 6 statement(s) parsed, 3 placeholder(s) on screen
+  [genux] 8 statement(s) parsed, 2 placeholder(s) on screen
+  [genux] 9 statement(s) parsed, 1 placeholder(s) on screen
+  [genux] 10 statement(s) parsed, 2 placeholder(s) on screen
+  [genux] 11 statement(s) parsed, 1 placeholder(s) on screen
+  [genux] 12 statement(s) parsed, 0 placeholder(s) on screen
+
+the streamed program:
+  root = Stack([title, summary, plan, chart, actions])
+  title = Text("Spring 2027 · suggested plan", "h1")
+  summary = Stack([units, evenings, risk], "row")
+  units = Metric("Units", 9, "full-time")
+  evenings = Metric("Days on campus", 5)
+  risk = Badge("CMPE 281 has 2 seats left: enroll soon", "warn")
+  plan = Table(["Course", "Title", "When", "Seats"], rows)
+  rows = [["CMPE 280", "Web UI Design and Development", "Mon/Wed 18:00", 12], ["CMPE 281", "Cloud Technologies",
+  chart = BarChart("Expected hours per week", ["CMPE 280", "CMPE 281", "CMPE 258"], [9, 8, 10])
+  actions = Stack([enroll, fridays], "row")
+  enroll = Button("Enroll in all three", "enroll_all", "primary")
+  fridays = Button("Keep Fridays free", "avoid_friday")
+the action's answer (four re-assigned names):
+  rows = [["CMPE 280", "Web UI Design and Development", "Mon/Wed 18:00", 12], ["CMPE 281", "Cloud Technologies",
+  chart = BarChart("Expected hours per week", ["CMPE 280", "CMPE 281", "CMPE 272"], [9, 8, 7])
+  evenings = Metric("Days on campus", 4, "-1")
+  risk = Badge("CMPE 272 and CMPE 280 meet at the same time: pick one", "bad")
+
+screenshots: demo_before.png, demo.png   (2 request(s), 2.8s)

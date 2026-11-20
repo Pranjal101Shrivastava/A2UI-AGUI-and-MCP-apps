@@ -1,0 +1,204 @@
+[
+ {
+  "api": "mcp",
+  "method": "initialize",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "result": {
+    "protocolVersion": "2025-06-18",
+    "serverInfo": {
+     "name": "weather-static",
+     "version": "1.0.0"
+    },
+    "capabilities": {
+     "tools": {},
+     "resources": {},
+     "extensions": {
+      "io.modelcontextprotocol/ui": {}
+     }
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "notifications/initialized",
+  "json": {}
+ },
+ {
+  "api": "mcp",
+  "method": "tools/list",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 2,
+   "result": {
+    "tools": [
+     {
+      "name": "get_forecast",
+      "description": "Forecast for a city (Seattle or San Jose).",
+      "inputSchema": {
+       "type": "object",
+       "properties": {
+        "city": {
+         "type": "string"
+        },
+        "days": {
+         "type": "integer"
+        },
+        "units": {
+         "enum": [
+          "C",
+          "F"
+         ]
+        }
+       },
+       "required": [
+        "city"
+       ]
+      },
+      "_meta": {
+       "ui": {
+        "resourceUri": "ui://weather/forecast.html"
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "api": "chat",
+  "method": "",
+  "json": {
+   "text": "Here is the Seattle forecast.",
+   "toolCall": {
+    "name": "get_forecast",
+    "arguments": {
+     "city": "Seattle",
+     "days": 3
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "tools/call",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 3,
+   "result": {
+    "content": [
+     {
+      "type": "text",
+      "text": "Seattle: Fri 12\u00b0C/7\u00b0C rain; Sat 14\u00b0C/8\u00b0C showers; Sun 16\u00b0C/9\u00b0C cloudy"
+     }
+    ],
+    "structuredContent": {
+     "city": "Seattle",
+     "units": "C",
+     "days": [
+      {
+       "day": "Fri",
+       "high": 12,
+       "low": 7,
+       "sky": "rain",
+       "icon": "\ud83c\udf27"
+      },
+      {
+       "day": "Sat",
+       "high": 14,
+       "low": 8,
+       "sky": "showers",
+       "icon": "\ud83c\udf26"
+      },
+      {
+       "day": "Sun",
+       "high": 16,
+       "low": 9,
+       "sky": "cloudy",
+       "icon": "\u2601"
+      }
+     ]
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "resources/read",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 4,
+   "result": {
+    "contents": [
+     {
+      "uri": "ui://weather/forecast.html",
+      "mimeType": "text/html;profile=mcp-app",
+      "text": "<!doctype html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>forecast</title>\n<style>\n  body { margin: 0; font: 14px system-ui, sans-serif; color: #1f2430; }\n  .app { padding: 14px 16px; }\n  h2 { margin: 0 0 2px; font-size: 18px; }\n  .muted { color: #667085; font-size: 12px; }\n  .days { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; margin: 12px 0; }\n  .day { background: #f3f5fb; border-radius: 10px; padding: 10px; text-align: center; }\n  .icon { font-size: 26px; } .hi { font-weight: 700; font-size: 18px; }\n  button { font: inherit; padding: 6px 12px; border-radius: 8px; border: 1px solid #d0d5e2; background: #fff; cursor: pointer; }\n  button.on { background: #4f46e5; color: #fff; border-color: #4f46e5; }\n</style>\n<script>\n// The app (view) side of MCP Apps: JSON-RPC 2.0 over postMessage to the host.\n// The server inlines this file into every hand-written view it serves.\n(() => {\n  let next = 0;\n  const pending = new Map();\n  const handlers = {};\n  const request = (method, params) => {\n    const id = ++next;\n    parent.postMessage({ jsonrpc: \"2.0\", id, method, params }, \"*\");\n    return new Promise((resolve, reject) => pending.set(id, { resolve, reject }));\n  };\n  const notify = (method, params) => parent.postMessage({ jsonrpc: \"2.0\", method, params }, \"*\");\n  addEventListener(\"message\", (event) => {\n    if (event.source !== parent) return;\n    const msg = event.data;\n    if (!msg || msg.jsonrpc !== \"2.0\") return;\n    if (msg.id !== undefined && !msg.method) {          // a response to one of our requests\n      const p = pending.get(msg.id);\n      pending.delete(msg.id);\n      if (msg.error) p?.reject(msg.error); else p?.resolve(msg.result);\n      return;\n    }\n    handlers[msg.method]?.(msg.params || {});           // a notification from the host\n  });\n  window.mcpApp = {\n    request, notify,\n    on: (method, fn) => (handlers[method] = fn),\n    async connect() {\n      const init = await request(\"ui/initialize\", { protocolVersion: \"2026-01-26\",\n        appInfo: { name: document.title || \"app\", version: \"1.0.0\" }, appCapabilities: {} });\n      notify(\"ui/notifications/initialized\", {});\n      return init;\n    },\n    resized() {\n      notify(\"ui/notifications/size-changed\", { width: document.body.scrollWidth, height: document.documentElement.scrollHeight });\n    },\n    callTool: (name, args) => request(\"tools/call\", { name, arguments: args }),\n    say: (text) => request(\"ui/message\", { role: \"user\", content: { type: \"text\", text } }),\n  };\n})();\n</script>\n</head>\n<body>\n<div class=\"app\">\n  <h2 id=\"title\">Loading\u2026</h2>\n  <div class=\"muted\" id=\"sub\">waiting for the tool result</div>\n  <div class=\"days\" id=\"days\"></div>\n  <button id=\"c\" class=\"on\">\u00b0C</button> <button id=\"f\">\u00b0F</button>\n  <button id=\"ask\">Ask what to pack</button>\n</div>\n<script>\n  let current = { city: \"\", units: \"C\" };\n  function render(result) {\n    const data = result.structuredContent;               // structured data for the app; content[] is for the model\n    current = { city: data.city, units: data.units };\n    document.getElementById(\"title\").textContent = `${data.city} \u00b7 next ${data.days.length} days`;\n    document.getElementById(\"sub\").textContent = \"pre-built view \u00b7 data from tools/call\";\n    document.getElementById(\"days\").innerHTML = data.days.map((d) =>\n      `<div class=\"day\"><div>${d.day}</div><div class=\"icon\">${d.icon}</div>` +\n      `<div class=\"hi\">${d.high}\u00b0</div><div class=\"muted\">${d.low}\u00b0 \u00b7 ${d.sky}</div></div>`).join(\"\");\n    document.getElementById(\"c\").className = data.units === \"C\" ? \"on\" : \"\";\n    document.getElementById(\"f\").className = data.units === \"F\" ? \"on\" : \"\";\n    mcpApp.resized();\n  }\n  mcpApp.on(\"ui/notifications/tool-result\", render);\n  const units = (u) => mcpApp.callTool(\"get_forecast\", { city: current.city, units: u }).then(render);\n  document.getElementById(\"c\").onclick = () => units(\"C\");\n  document.getElementById(\"f\").onclick = () => units(\"F\");\n  document.getElementById(\"ask\").onclick = () => mcpApp.say(`What should I pack for ${current.city} this weekend?`);\n  mcpApp.connect();\n</script>\n</body>\n</html>\n",
+      "_meta": {
+       "ui": {
+        "csp": {
+         "connectDomains": [],
+         "resourceDomains": []
+        },
+        "prefersBorder": true
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "tools/call",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 5,
+   "result": {
+    "content": [
+     {
+      "type": "text",
+      "text": "Seattle: Fri 54\u00b0F/45\u00b0F rain; Sat 57\u00b0F/46\u00b0F showers; Sun 61\u00b0F/48\u00b0F cloudy"
+     }
+    ],
+    "structuredContent": {
+     "city": "Seattle",
+     "units": "F",
+     "days": [
+      {
+       "day": "Fri",
+       "high": 54,
+       "low": 45,
+       "sky": "rain",
+       "icon": "\ud83c\udf27"
+      },
+      {
+       "day": "Sat",
+       "high": 57,
+       "low": 46,
+       "sky": "showers",
+       "icon": "\ud83c\udf26"
+      },
+      {
+       "day": "Sun",
+       "high": 61,
+       "low": 48,
+       "sky": "cloudy",
+       "icon": "\u2601"
+      }
+     ]
+    }
+   }
+  }
+ },
+ {
+  "api": "chat",
+  "method": "",
+  "json": {
+   "text": "Rain on Friday and showers on Saturday: pack a waterproof shell, a warm layer for 7\u00b0C mornings, and shoes that can get wet.",
+   "toolCall": null
+  }
+ }
+]

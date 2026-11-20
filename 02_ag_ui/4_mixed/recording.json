@@ -1,0 +1,195 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_91f5dd2c",
+    "runId": "run_1795209361920"
+   },
+   {
+    "type": "STATE_SNAPSHOT",
+    "snapshot": {
+     "ui": {
+      "type": "Column",
+      "children": [
+       {
+        "type": "Text",
+        "props": {
+         "text": "Kyoto weekend",
+         "variant": "h1"
+        }
+       },
+       {
+        "type": "Row",
+        "children": [
+         {
+          "type": "Column",
+          "children": [
+           {
+            "type": "Card",
+            "props": {
+             "title": "Sat"
+            },
+            "children": [
+             {
+              "type": "Text",
+              "props": {
+               "text": "Kiyomizu-dera, Sannenzaka, Gion."
+              }
+             }
+            ]
+           },
+           {
+            "type": "Card",
+            "props": {
+             "title": "Sun"
+            },
+            "children": [
+             {
+              "type": "Text",
+              "props": {
+               "text": "Indoor day: Nishiki Market, museum, tea."
+              }
+             }
+            ]
+           },
+           {
+            "type": "Card",
+            "props": {
+             "title": "Mon"
+            },
+            "children": [
+             {
+              "type": "Text",
+              "props": {
+               "text": "Fushimi Inari at sunrise, Nara deer park."
+              }
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "GeneratedView",
+          "props": {
+           "title": "Route sketch",
+           "html": "<style>svg{font:12px system-ui;width:100%}.p{fill:none;stroke:#be185d;stroke-width:3;stroke-dasharray:8 6;\nanimation:m 1.2s linear infinite}@keyframes m{to{stroke-dashoffset:-28}}circle{fill:#4f46e5}</style>\n<svg viewBox=\"0 0 360 150\"><path class=\"p\" d=\"M40 110 C 110 20, 170 20, 200 70 S 290 140, 320 40\"/>\n<circle cx=\"40\" cy=\"110\" r=\"7\"/><text x=\"22\" y=\"135\">Kyoto Stn</text>\n<circle cx=\"200\" cy=\"70\" r=\"7\"/><text x=\"165\" y=\"98\">Gion \u00b7 Sat</text>\n<circle cx=\"320\" cy=\"40\" r=\"7\"/><text x=\"265\" y=\"22\">Fushimi \u00b7 Mon</text></svg>",
+           "height": 190
+          }
+         }
+        ]
+       },
+       {
+        "type": "Row",
+        "children": [
+         {
+          "type": "Metric",
+          "props": {
+           "label": "Budget used",
+           "value": "\u00a526,000",
+           "delta": "of \u00a540,000"
+          }
+         },
+         {
+          "type": "Badge",
+          "props": {
+           "text": "hotel: waiting for approval",
+           "tone": "warn"
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   },
+   {
+    "type": "TOOL_CALL_START",
+    "toolCallId": "call_1_0",
+    "toolCallName": "confirm_booking"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "{\"hotel\": \"Ryokan Sakura, Gion\", \"nights"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "\": 2, \"price\": \"\u00a536,000\", \"why\": \"Walkin"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "g distance to Saturday's stops.\"}"
+   },
+   {
+    "type": "TOOL_CALL_END",
+    "toolCallId": "call_1_0"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_91f5dd2c",
+    "runId": "run_1795209361920"
+   }
+  ]
+ },
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_91f5dd2c",
+    "runId": "run_1795209362498"
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "replace",
+      "path": "/ui/children/2/children/0/props/value",
+      "value": "\u00a562,000"
+     },
+     {
+      "op": "replace",
+      "path": "/ui/children/2/children/1",
+      "value": {
+       "type": "Badge",
+       "props": {
+        "text": "Ryokan Sakura booked \u00b7 2 nights",
+        "tone": "ok"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_58d3b6cb",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_58d3b6cb",
+    "delta": "Booked. Your budge"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_58d3b6cb",
+    "delta": "t is updated."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_58d3b6cb"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_91f5dd2c",
+    "runId": "run_1795209362498"
+   }
+  ]
+ }
+]

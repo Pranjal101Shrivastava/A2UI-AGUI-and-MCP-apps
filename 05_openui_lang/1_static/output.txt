@@ -1,0 +1,13 @@
+$ python 05_openui_lang/1_static/demo.py
+
+POST api/run  {"prompt":"Which evening courses can I still get into this spring?"}
+  <- chunk x14  (first: {"text":"root = CourseList([web, "})
+  <- trace {"text":"program valid"}
+  <- end {}
+POST api/action  {"name":"enroll","context":{"code":"CMPE 281"}}
+  <- trace {"text":"action enroll CMPE 281: server code writes the new statements"}
+  <- chunk {"text":"cloud = CourseCard(\"CMPE 281\", \"Cloud Technologies\", 3, \"Tue/Thu 18:00\", 1, true)\n"}
+  <- chunk {"text":"note = ConflictAlert(\"Enrolled in CMPE 281 · 1 seat(s) left\", \"ok\")\n"}
+  <- end {}
+
+screenshots: demo_before.png, demo.png   (2 request(s), 2.1s)

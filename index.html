@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generative UI Codelabs</title>
+  <link rel="stylesheet" href="shared/style.css">
+  <style>
+    .hero { background: var(--ink); color: #fff; padding: 36px 16px 30px; }
+    .hero > div { max-width: 1180px; margin: 0 auto; }
+    .hero h1 { margin: 0 0 8px; font-size: 30px; }
+    .hero p { margin: 0; color: #c7d2fe; max-width: 760px; }
+    .modes { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .modes span { background: #ffffff1a; border-radius: 99px; padding: 4px 12px; font-size: 13px; }
+    main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 48px; }
+    .tech { margin-bottom: 30px; }
+    .tech h2 { margin: 0; font-size: 20px; } .tech h2 a { color: var(--ink); text-decoration: none; }
+    .tech header p { margin: 4px 0 12px; color: var(--muted); }
+    .scenario { color: var(--accent); }
+    .cells { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .cell { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+    .shot { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--bg); }
+    .shot img { width: 100%; display: block; }
+    .mode { margin: 10px 12px 0; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+    .what { margin: 4px 12px 8px; font-size: 14px; flex: 1; }
+    .links { margin: 0 12px 12px; font-size: 13px; } .links a { color: var(--accent); }
+    .note { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .cells { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .cells { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="hero"><div>
+    <h1>Generative UI codelabs</h1>
+    <p>A2UI, AG-UI, MCP Apps, json-render, OpenUI Lang and a coding-agent harness, each in four modes: 24 runnable examples with code walkthroughs and recorded executions.</p>
+    <div class="modes"><span>static: the model fills pre-built components</span><span>declarative: the model composes from a catalog</span><span>open-ended: the model writes sandboxed HTML</span><span>mixed: a catalog plus one sandboxed region</span></div>
+  </div></div>
+  <main>
+    <p class="note">Each page runs live against <code>python serve.py</code>. Opened from a static host, it replays the recorded run of the same page. Source and walkthroughs: <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps">GitHub repository</a>.</p>
+    <section class="tech">
+      <header><h2><a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/01_a2ui/README.md">A2UI</a></h2><p>Structure and data as two streams: surfaces, a data model, actions. <span class="scenario">Scenario: Book a study room.</span></p></header>
+      <div class="cells">
+      <article class="cell">
+        <a class="shot" href="01_a2ui/1_static/index.html"><img src="01_a2ui/1_static/demo.png" alt="A2UI static screenshot" loading="lazy"></a>
+        <div class="mode">static</div>
+        <div class="what">a pre-built surface, the model fills the data</div>
+        <div class="links"><a href="01_a2ui/1_static/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/01_a2ui/1_static/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="01_a2ui/2_declarative/index.html"><img src="01_a2ui/2_declarative/demo.png" alt="A2UI declarative screenshot" loading="lazy"></a>
+        <div class="mode">declarative</div>
+        <div class="what">the model writes the surface as JSONL</div>
+        <div class="links"><a href="01_a2ui/2_declarative/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/01_a2ui/2_declarative/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="01_a2ui/3_open_ended/index.html"><img src="01_a2ui/3_open_ended/demo.png" alt="A2UI open-ended screenshot" loading="lazy"></a>
+        <div class="mode">open-ended</div>
+        <div class="what">one HtmlFrame, all model-written HTML</div>
+        <div class="links"><a href="01_a2ui/3_open_ended/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/01_a2ui/3_open_ended/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="01_a2ui/4_mixed/index.html"><img src="01_a2ui/4_mixed/demo.png" alt="A2UI mixed screenshot" loading="lazy"></a>
+        <div class="mode">mixed</div>
+        <div class="what">a catalog form plus one sandboxed map</div>
+        <div class="links"><a href="01_a2ui/4_mixed/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/01_a2ui/4_mixed/README.md">Walkthrough</a></div>
+      </article>
+      </div>
+    </section>
+    <section class="tech">
+      <header><h2><a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/02_ag_ui/README.md">AG-UI</a></h2><p>One event stream between agent and page: tool calls, shared state, runs. <span class="scenario">Scenario: Plan a Kyoto weekend.</span></p></header>
+      <div class="cells">
+      <article class="cell">
+        <a class="shot" href="02_ag_ui/1_static/index.html"><img src="02_ag_ui/1_static/demo.png" alt="AG-UI static screenshot" loading="lazy"></a>
+        <div class="mode">static</div>
+        <div class="what">tool calls drawn by pre-built components</div>
+        <div class="links"><a href="02_ag_ui/1_static/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/02_ag_ui/1_static/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="02_ag_ui/2_declarative/index.html"><img src="02_ag_ui/2_declarative/demo.png" alt="AG-UI declarative screenshot" loading="lazy"></a>
+        <div class="mode">declarative</div>
+        <div class="what">the UI lives in shared state</div>
+        <div class="links"><a href="02_ag_ui/2_declarative/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/02_ag_ui/2_declarative/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="02_ag_ui/3_open_ended/index.html"><img src="02_ag_ui/3_open_ended/demo.png" alt="AG-UI open-ended screenshot" loading="lazy"></a>
+        <div class="mode">open-ended</div>
+        <div class="what">the agent streams a whole HTML page</div>
+        <div class="links"><a href="02_ag_ui/3_open_ended/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/02_ag_ui/3_open_ended/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="02_ag_ui/4_mixed/index.html"><img src="02_ag_ui/4_mixed/demo.png" alt="AG-UI mixed screenshot" loading="lazy"></a>
+        <div class="mode">mixed</div>
+        <div class="what">catalog state, one generated region, a human in the loop</div>
+        <div class="links"><a href="02_ag_ui/4_mixed/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/02_ag_ui/4_mixed/README.md">Walkthrough</a></div>
+      </article>
+      </div>
+    </section>
+    <section class="tech">
+      <header><h2><a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/03_mcp_apps/README.md">MCP Apps</a></h2><p>A tool result that carries its interface into a host you do not control. <span class="scenario">Scenario: Weather in a chat host.</span></p></header>
+      <div class="cells">
+      <article class="cell">
+        <a class="shot" href="03_mcp_apps/1_static/index.html"><img src="03_mcp_apps/1_static/demo.png" alt="MCP Apps static screenshot" loading="lazy"></a>
+        <div class="mode">static</div>
+        <div class="what">a tool result shown by a pre-built app</div>
+        <div class="links"><a href="03_mcp_apps/1_static/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/03_mcp_apps/1_static/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="03_mcp_apps/2_declarative/index.html"><img src="03_mcp_apps/2_declarative/demo.png" alt="MCP Apps declarative screenshot" loading="lazy"></a>
+        <div class="mode">declarative</div>
+        <div class="what">a generic app draws the server's catalog spec</div>
+        <div class="links"><a href="03_mcp_apps/2_declarative/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/03_mcp_apps/2_declarative/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="03_mcp_apps/3_open_ended/index.html"><img src="03_mcp_apps/3_open_ended/demo.png" alt="MCP Apps open-ended screenshot" loading="lazy"></a>
+        <div class="mode">open-ended</div>
+        <div class="what">the server's model writes the whole app</div>
+        <div class="links"><a href="03_mcp_apps/3_open_ended/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/03_mcp_apps/3_open_ended/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="03_mcp_apps/4_mixed/index.html"><img src="03_mcp_apps/4_mixed/demo.png" alt="MCP Apps mixed screenshot" loading="lazy"></a>
+        <div class="mode">mixed</div>
+        <div class="what">a catalog app with one generated region, two sandboxes deep</div>
+        <div class="links"><a href="03_mcp_apps/4_mixed/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/03_mcp_apps/4_mixed/README.md">Walkthrough</a></div>
+      </article>
+      </div>
+    </section>
+    <section class="tech">
+      <header><h2><a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/04_json_render/README.md">json-render</a></h2><p>A flat JSON spec, a catalog, patch streams and two renderers. <span class="scenario">Scenario: Coffee cart sales.</span></p></header>
+      <div class="cells">
+      <article class="cell">
+        <a class="shot" href="04_json_render/1_static/index.html"><img src="04_json_render/1_static/demo.png" alt="json-render static screenshot" loading="lazy"></a>
+        <div class="mode">static</div>
+        <div class="what">pick a pre-built spec, fill its state</div>
+        <div class="links"><a href="04_json_render/1_static/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/04_json_render/1_static/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="04_json_render/2_declarative/index.html"><img src="04_json_render/2_declarative/demo.png" alt="json-render declarative screenshot" loading="lazy"></a>
+        <div class="mode">declarative</div>
+        <div class="what">the model streams the spec as patches</div>
+        <div class="links"><a href="04_json_render/2_declarative/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/04_json_render/2_declarative/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="04_json_render/3_open_ended/index.html"><img src="04_json_render/3_open_ended/demo.png" alt="json-render open-ended screenshot" loading="lazy"></a>
+        <div class="mode">open-ended</div>
+        <div class="what">still JSON, but the vocabulary is open</div>
+        <div class="links"><a href="04_json_render/3_open_ended/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/04_json_render/3_open_ended/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="04_json_render/4_mixed/index.html"><img src="04_json_render/4_mixed/demo.png" alt="json-render mixed screenshot" loading="lazy"></a>
+        <div class="mode">mixed</div>
+        <div class="what">a catalog dashboard with one model-drawn region</div>
+        <div class="links"><a href="04_json_render/4_mixed/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/04_json_render/4_mixed/README.md">Walkthrough</a></div>
+      </article>
+      </div>
+    </section>
+    <section class="tech">
+      <header><h2><a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/05_openui_lang/README.md">OpenUI Lang</a></h2><p>A compact UI language with forward references and re-assignment. <span class="scenario">Scenario: Semester planner.</span></p></header>
+      <div class="cells">
+      <article class="cell">
+        <a class="shot" href="05_openui_lang/1_static/index.html"><img src="05_openui_lang/1_static/demo.png" alt="OpenUI Lang static screenshot" loading="lazy"></a>
+        <div class="mode">static</div>
+        <div class="what">a tiny language over three pre-built widgets</div>
+        <div class="links"><a href="05_openui_lang/1_static/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/05_openui_lang/1_static/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="05_openui_lang/2_declarative/index.html"><img src="05_openui_lang/2_declarative/demo.png" alt="OpenUI Lang declarative screenshot" loading="lazy"></a>
+        <div class="mode">declarative</div>
+        <div class="what">compose primitives, stream with forward references</div>
+        <div class="links"><a href="05_openui_lang/2_declarative/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/05_openui_lang/2_declarative/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="05_openui_lang/3_open_ended/index.html"><img src="05_openui_lang/3_open_ended/demo.png" alt="OpenUI Lang open-ended screenshot" loading="lazy"></a>
+        <div class="mode">open-ended</div>
+        <div class="what">one HtmlArtifact holds the whole UI</div>
+        <div class="links"><a href="05_openui_lang/3_open_ended/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/05_openui_lang/3_open_ended/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="05_openui_lang/4_mixed/index.html"><img src="05_openui_lang/4_mixed/demo.png" alt="OpenUI Lang mixed screenshot" loading="lazy"></a>
+        <div class="mode">mixed</div>
+        <div class="what">primitives for the plan, one HtmlArtifact for the week</div>
+        <div class="links"><a href="05_openui_lang/4_mixed/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/05_openui_lang/4_mixed/README.md">Walkthrough</a></div>
+      </article>
+      </div>
+    </section>
+    <section class="tech">
+      <header><h2><a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/06_harness/README.md">Harness</a></h2><p>Generative UI as tools inside a coding-agent loop, on web and terminal. <span class="scenario">Scenario: Fix a failing test.</span></p></header>
+      <div class="cells">
+      <article class="cell">
+        <a class="shot" href="06_harness/1_static/index.html"><img src="06_harness/1_static/demo.png" alt="Harness static screenshot" loading="lazy"></a>
+        <div class="mode">static</div>
+        <div class="what">the agent shows pre-built panels</div>
+        <div class="links"><a href="06_harness/1_static/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/06_harness/1_static/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="06_harness/2_declarative/index.html"><img src="06_harness/2_declarative/demo.png" alt="Harness declarative screenshot" loading="lazy"></a>
+        <div class="mode">declarative</div>
+        <div class="what">render_ui, and validation errors as tool results</div>
+        <div class="links"><a href="06_harness/2_declarative/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/06_harness/2_declarative/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="06_harness/3_open_ended/index.html"><img src="06_harness/3_open_ended/demo.png" alt="Harness open-ended screenshot" loading="lazy"></a>
+        <div class="mode">open-ended</div>
+        <div class="what">render_html, with a fallback for the terminal</div>
+        <div class="links"><a href="06_harness/3_open_ended/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/06_harness/3_open_ended/README.md">Walkthrough</a></div>
+      </article>
+      <article class="cell">
+        <a class="shot" href="06_harness/4_mixed/index.html"><img src="06_harness/4_mixed/demo.png" alt="Harness mixed screenshot" loading="lazy"></a>
+        <div class="mode">mixed</div>
+        <div class="what">review card, generated diff, approval gate</div>
+        <div class="links"><a href="06_harness/4_mixed/index.html">Open page</a> · <a href="https://github.com/Pranjal101Shrivastava/A2UI-AGUI-and-MCP-apps/blob/main/06_harness/4_mixed/README.md">Walkthrough</a></div>
+      </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

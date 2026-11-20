@@ -1,0 +1,302 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/root",
+     "value": "page"
+    },
+    "t": 0.032
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/page",
+     "value": {
+      "type": "Column",
+      "children": [
+       "title",
+       "kpis",
+       "chart",
+       "items",
+       "reorder"
+      ]
+     }
+    },
+    "t": 0.137
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/title",
+     "value": {
+      "type": "Text",
+      "props": {
+       "text": "Coffee cart \u00b7 this week",
+       "variant": "h1"
+      }
+     }
+    },
+    "t": 0.227
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/kpis",
+     "value": {
+      "type": "Row",
+      "children": [
+       "revenue",
+       "cups",
+       "best"
+      ]
+     }
+    },
+    "t": 0.307
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/revenue",
+     "value": {
+      "type": "Metric",
+      "props": {
+       "label": "Revenue",
+       "value": {
+        "$state": "/revenue"
+       },
+       "delta": "+18%"
+      }
+     }
+    },
+    "t": 0.41
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/cups",
+     "value": {
+      "type": "Metric",
+      "props": {
+       "label": "Cups",
+       "value": {
+        "$state": "/cups"
+       },
+       "delta": "+11%"
+      }
+     }
+    },
+    "t": 0.51
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/best",
+     "value": {
+      "type": "Metric",
+      "props": {
+       "label": "Busiest day",
+       "value": "Fri \u00b7 104"
+      }
+     }
+    },
+    "t": 0.591
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/chart",
+     "value": {
+      "type": "BarChart",
+      "props": {
+       "title": "Cups per day",
+       "labels": {
+        "$state": "/days"
+       },
+       "values": {
+        "$state": "/by_day"
+       }
+      }
+     }
+    },
+    "t": 0.718
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/items",
+     "value": {
+      "type": "Table",
+      "props": {
+       "columns": [
+        "Drink",
+        "Cups",
+        "Price"
+       ],
+       "rows": {
+        "$state": "/items"
+       }
+      }
+     }
+    },
+    "t": 0.824
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/reorder",
+     "value": {
+      "type": "Button",
+      "props": {
+       "label": "Beans are low: reorder",
+       "action": "reorder",
+       "variant": "primary"
+      }
+     }
+    },
+    "t": 0.92
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/state/revenue",
+     "value": "$1,673"
+    },
+    "t": 0.967
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/state/cups",
+     "value": 385
+    },
+    "t": 0.998
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/state/days",
+     "value": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri"
+     ]
+    },
+    "t": 1.067
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/state/by_day",
+     "value": [
+      62,
+      71,
+      58,
+      90,
+      104
+     ]
+    },
+    "t": 1.097
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/state/items",
+     "value": [
+      [
+       "Latte",
+       142,
+       "$4.50"
+      ],
+      [
+       "Cold brew",
+       118,
+       "$4.00"
+      ],
+      [
+       "Chai",
+       64,
+       "$4.25"
+      ],
+      [
+       "Mocha",
+       61,
+       "$4.75"
+      ]
+     ]
+    },
+    "t": 1.212
+   },
+   {
+    "type": "trace",
+    "text": "final spec valid"
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action reorder: asking the model for patches against the current spec"
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/ordered",
+     "value": {
+      "type": "Badge",
+      "props": {
+       "text": "Ordered 10 kg beans \u00b7 arrives Thursday",
+       "tone": "ok"
+      }
+     }
+    },
+    "t": 0.119
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "replace",
+     "path": "/elements/page/children/4",
+     "value": "ordered"
+    },
+    "t": 0.173
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "remove",
+     "path": "/elements/reorder"
+    },
+    "t": 0.208
+   },
+   {
+    "type": "trace",
+    "text": "final spec valid"
+   }
+  ]
+ }
+]

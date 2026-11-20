@@ -1,0 +1,24 @@
+$ python 02_ag_ui/4_mixed/demo.py
+
+POST api/run  {"threadId":"thread_91f5dd2c","runId":"run_1795209361920","messages":[{"id":"user_1795209361920","role":"user…
+  <- RUN_STARTED {"threadId":"thread_91f5dd2c","runId":"run_1795209361920"}
+  <- STATE_SNAPSHOT {"snapshot":{"ui":{"type":"Column","children":[{"type":"Text","props":{"text":"Kyoto weekend","variant":"h1"}},{"type":"Row","chi…
+  <- TOOL_CALL_START {"toolCallId":"call_1_0","toolCallName":"confirm_booking"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_1_0","delta":"{\"hotel\": \"Ryokan Sakura, Gion\", \"nights"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_1_0","delta":"\": 2, \"price\": \"¥36,000\", \"why\": \"Walkin"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_1_0","delta":"g distance to Saturday's stops.\"}"}
+  <- TOOL_CALL_END {"toolCallId":"call_1_0"}
+  <- RUN_FINISHED {"threadId":"thread_91f5dd2c","runId":"run_1795209361920"}
+POST api/run  {"threadId":"thread_91f5dd2c","runId":"run_1795209362498","messages":[{"id":"user_1795209361920","role":"user…
+  <- RUN_STARTED {"threadId":"thread_91f5dd2c","runId":"run_1795209362498"}
+  <- STATE_DELTA {"delta":[{"op":"replace","path":"/ui/children/2/children/0/props/value","value":"¥62,000"},{"op":"replace","path":"/ui/children/…
+  <- TEXT_MESSAGE_START {"messageId":"msg_58d3b6cb","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_58d3b6cb","delta":"Booked. Your budge"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_58d3b6cb","delta":"t is updated."}
+  <- TEXT_MESSAGE_END {"messageId":"msg_58d3b6cb"}
+  <- RUN_FINISHED {"threadId":"thread_91f5dd2c","runId":"run_1795209362498"}
+
+browser console:
+  [genux] frontend tool confirm_booking is waiting for the user
+
+screenshots: demo_before.png, demo.png   (2 request(s), 1.8s)

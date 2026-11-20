@@ -1,0 +1,470 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_ab313e8c",
+    "runId": "run_1795209358382"
+   },
+   {
+    "type": "STATE_SNAPSHOT",
+    "snapshot": {
+     "ui": {
+      "type": "Column",
+      "children": [
+       {
+        "type": "Text",
+        "props": {
+         "text": "Kyoto \u00b7 3-day plan",
+         "variant": "h1"
+        }
+       },
+       {
+        "type": "Row",
+        "children": [
+         {
+          "type": "Card",
+          "props": {
+           "title": "Sat \u00b7 Eastern Kyoto"
+          },
+          "children": [
+           {
+            "type": "Text",
+            "props": {
+             "text": "Kiyomizu-dera at 8:00, Sannenzaka lanes, Gion at dusk."
+            }
+           },
+           {
+            "type": "Badge",
+            "props": {
+             "text": "sunny 19\u00b0",
+             "tone": "ok"
+            }
+           }
+          ]
+         },
+         {
+          "type": "Card",
+          "props": {
+           "title": "Sun \u00b7 Arashiyama"
+          },
+          "children": [
+           {
+            "type": "Text",
+            "props": {
+             "text": "Bamboo grove, Tenryu-ji, river walk."
+            }
+           },
+           {
+            "type": "Badge",
+            "props": {
+             "text": "rain 16\u00b0",
+             "tone": "warn"
+            }
+           },
+           {
+            "type": "Button",
+            "props": {
+             "label": "Make it an indoor day",
+             "action": "rain_plan",
+             "variant": "primary"
+            }
+           }
+          ]
+         },
+         {
+          "type": "Card",
+          "props": {
+           "title": "Mon \u00b7 Fushimi & Nara"
+          },
+          "children": [
+           {
+            "type": "Text",
+            "props": {
+             "text": "Fushimi Inari at sunrise, deer park in Nara after lunch."
+            }
+           },
+           {
+            "type": "Badge",
+            "props": {
+             "text": "cloudy 18\u00b0",
+             "tone": "info"
+            }
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "Metric",
+        "props": {
+         "label": "Estimated budget",
+         "value": "\u00a562,000"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "type": "STEP_STARTED",
+    "stepName": "edit_ui"
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "add",
+      "path": "/ui",
+      "value": {
+       "type": "Column",
+       "children": [
+        {
+         "type": "Text",
+         "props": {
+          "text": "Kyoto \u00b7 3-day plan",
+          "variant": "h1"
+         }
+        },
+        {
+         "type": "Row",
+         "children": []
+        },
+        {
+         "type": "Metric",
+         "props": {
+          "label": "Estimated budget",
+          "value": "\u2026"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "add",
+      "path": "/ui/children/1/children/-",
+      "value": {
+       "type": "Card",
+       "props": {
+        "title": "Sat \u00b7 Eastern Kyoto"
+       },
+       "children": [
+        {
+         "type": "Text",
+         "props": {
+          "text": "Kiyomizu-dera at 8:00, Sannenzaka lanes, Gion at dusk."
+         }
+        },
+        {
+         "type": "Badge",
+         "props": {
+          "text": "sunny 19\u00b0",
+          "tone": "ok"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "add",
+      "path": "/ui/children/1/children/-",
+      "value": {
+       "type": "Card",
+       "props": {
+        "title": "Mon \u00b7 Fushimi & Nara"
+       },
+       "children": [
+        {
+         "type": "Text",
+         "props": {
+          "text": "Fushimi Inari at sunrise, deer park in Nara after lunch."
+         }
+        },
+        {
+         "type": "Badge",
+         "props": {
+          "text": "cloudy 18\u00b0",
+          "tone": "info"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "replace",
+      "path": "/ui/children/2/props/value",
+      "value": "\u00a562,000"
+     }
+    ]
+   },
+   {
+    "type": "STEP_FINISHED",
+    "stepName": "edit_ui"
+   },
+   {
+    "type": "CUSTOM",
+    "name": "validation_errors",
+    "value": [
+     "/ui/children/1/children/1: unknown component 'Map'; allowed: Badge, BarChart, Button, Card, Column, GeneratedView, Metric, Progress, Row, Table, Text, TextField"
+    ]
+   },
+   {
+    "type": "STEP_STARTED",
+    "stepName": "edit_ui"
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "add",
+      "path": "/ui/children/1/children/1",
+      "value": {
+       "type": "Card",
+       "props": {
+        "title": "Sun \u00b7 Arashiyama"
+       },
+       "children": [
+        {
+         "type": "Text",
+         "props": {
+          "text": "Bamboo grove, Tenryu-ji, river walk."
+         }
+        },
+        {
+         "type": "Badge",
+         "props": {
+          "text": "rain 16\u00b0",
+          "tone": "warn"
+         }
+        },
+        {
+         "type": "Button",
+         "props": {
+          "label": "Make it an indoor day",
+          "action": "rain_plan",
+          "variant": "primary"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "type": "STEP_FINISHED",
+    "stepName": "edit_ui"
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_9e2025d5",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_9e2025d5",
+    "delta": "Plan ready."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_9e2025d5"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_ab313e8c",
+    "runId": "run_1795209358382"
+   }
+  ]
+ },
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_ab313e8c",
+    "runId": "run_1795209358974"
+   },
+   {
+    "type": "STATE_SNAPSHOT",
+    "snapshot": {
+     "ui": {
+      "type": "Column",
+      "children": [
+       {
+        "type": "Text",
+        "props": {
+         "text": "Kyoto \u00b7 3-day plan",
+         "variant": "h1"
+        }
+       },
+       {
+        "type": "Row",
+        "children": [
+         {
+          "type": "Card",
+          "props": {
+           "title": "Sat \u00b7 Eastern Kyoto"
+          },
+          "children": [
+           {
+            "type": "Text",
+            "props": {
+             "text": "Kiyomizu-dera at 8:00, Sannenzaka lanes, Gion at dusk."
+            }
+           },
+           {
+            "type": "Badge",
+            "props": {
+             "text": "sunny 19\u00b0",
+             "tone": "ok"
+            }
+           }
+          ]
+         },
+         {
+          "type": "Card",
+          "props": {
+           "title": "Sun \u00b7 Indoor Kyoto"
+          },
+          "children": [
+           {
+            "type": "Text",
+            "props": {
+             "text": "Nishiki Market, Kyoto National Museum, a tea ceremony in Gion."
+            }
+           },
+           {
+            "type": "Badge",
+            "props": {
+             "text": "indoor",
+             "tone": "ok"
+            }
+           }
+          ]
+         },
+         {
+          "type": "Card",
+          "props": {
+           "title": "Mon \u00b7 Fushimi & Nara"
+          },
+          "children": [
+           {
+            "type": "Text",
+            "props": {
+             "text": "Fushimi Inari at sunrise, deer park in Nara after lunch."
+            }
+           },
+           {
+            "type": "Badge",
+            "props": {
+             "text": "cloudy 18\u00b0",
+             "tone": "info"
+            }
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "Metric",
+        "props": {
+         "label": "Estimated budget",
+         "value": "\u00a566,500"
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "type": "STEP_STARTED",
+    "stepName": "edit_ui"
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "replace",
+      "path": "/ui/children/1/children/1",
+      "value": {
+       "type": "Card",
+       "props": {
+        "title": "Sun \u00b7 Indoor Kyoto"
+       },
+       "children": [
+        {
+         "type": "Text",
+         "props": {
+          "text": "Nishiki Market, Kyoto National Museum, a tea ceremony in Gion."
+         }
+        },
+        {
+         "type": "Badge",
+         "props": {
+          "text": "indoor",
+          "tone": "ok"
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "type": "STATE_DELTA",
+    "delta": [
+     {
+      "op": "replace",
+      "path": "/ui/children/2/props/value",
+      "value": "\u00a566,500"
+     }
+    ]
+   },
+   {
+    "type": "STEP_FINISHED",
+    "stepName": "edit_ui"
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_5aa29455",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_5aa29455",
+    "delta": "Sunday is now an i"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_5aa29455",
+    "delta": "ndoor day."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_5aa29455"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_ab313e8c",
+    "runId": "run_1795209358974"
+   }
+  ]
+ }
+]

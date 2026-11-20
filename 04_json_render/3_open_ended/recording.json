@@ -1,0 +1,220 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "attempt 1 rejected: poster: style backgroundImage uses a blocked CSS feature; share: prop 'onclick' is not allowed (on* handlers and attributes are stripped)"
+   },
+   {
+    "type": "spec",
+    "spec": {
+     "root": "poster",
+     "elements": {
+      "poster": {
+       "type": "section",
+       "props": {
+        "style": {
+         "background": "linear-gradient(135deg,#78350f,#b45309 60%,#f59e0b)",
+         "color": "#fff7ed",
+         "padding": "22px 24px",
+         "borderRadius": "16px",
+         "fontFamily": "Georgia, serif"
+        }
+       },
+       "children": [
+        "kicker",
+        "headline",
+        "heat",
+        "line",
+        "quote",
+        "share"
+       ]
+      },
+      "kicker": {
+       "type": "small",
+       "props": {
+        "text": "WEEK 47 \u00b7 CAMPUS COFFEE CART",
+        "style": {
+         "letterSpacing": "0.2em",
+         "opacity": "0.8"
+        }
+       }
+      },
+      "headline": {
+       "type": "h1",
+       "props": {
+        "text": "385 cups. Friday stole the show.",
+        "style": {
+         "fontSize": "30px",
+         "margin": "6px 0 14px"
+        }
+       }
+      },
+      "heat": {
+       "type": "div",
+       "props": {
+        "style": {
+         "display": "flex",
+         "gap": "6px",
+         "alignItems": "flex-end"
+        }
+       },
+       "children": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4"
+       ]
+      },
+      "d0": {
+       "type": "div",
+       "props": {
+        "text": "Mon 62",
+        "style": {
+         "flex": "1",
+         "height": "102px",
+         "display": "flex",
+         "alignItems": "flex-end",
+         "justifyContent": "center",
+         "paddingBottom": "6px",
+         "borderRadius": "8px",
+         "font": "600 12px system-ui",
+         "background": "rgba(255,247,237,0.61)",
+         "color": "#451a03"
+        }
+       }
+      },
+      "d1": {
+       "type": "div",
+       "props": {
+        "text": "Tue 71",
+        "style": {
+         "flex": "1",
+         "height": "111px",
+         "display": "flex",
+         "alignItems": "flex-end",
+         "justifyContent": "center",
+         "paddingBottom": "6px",
+         "borderRadius": "8px",
+         "font": "600 12px system-ui",
+         "background": "rgba(255,247,237,0.66)",
+         "color": "#451a03"
+        }
+       }
+      },
+      "d2": {
+       "type": "div",
+       "props": {
+        "text": "Wed 58",
+        "style": {
+         "flex": "1",
+         "height": "98px",
+         "display": "flex",
+         "alignItems": "flex-end",
+         "justifyContent": "center",
+         "paddingBottom": "6px",
+         "borderRadius": "8px",
+         "font": "600 12px system-ui",
+         "background": "rgba(255,247,237,0.58)",
+         "color": "#451a03"
+        }
+       }
+      },
+      "d3": {
+       "type": "div",
+       "props": {
+        "text": "Thu 90",
+        "style": {
+         "flex": "1",
+         "height": "130px",
+         "display": "flex",
+         "alignItems": "flex-end",
+         "justifyContent": "center",
+         "paddingBottom": "6px",
+         "borderRadius": "8px",
+         "font": "600 12px system-ui",
+         "background": "rgba(255,247,237,0.77)",
+         "color": "#451a03"
+        }
+       }
+      },
+      "d4": {
+       "type": "div",
+       "props": {
+        "text": "Fri 104",
+        "style": {
+         "flex": "1",
+         "height": "144px",
+         "display": "flex",
+         "alignItems": "flex-end",
+         "justifyContent": "center",
+         "paddingBottom": "6px",
+         "borderRadius": "8px",
+         "font": "600 12px system-ui",
+         "background": "rgba(255,247,237,0.85)",
+         "color": "#451a03"
+        }
+       }
+      },
+      "line": {
+       "type": "p",
+       "props": {
+        "text": "Latte led with 142 cups; cold brew climbed to 118.",
+        "style": {
+         "marginTop": "14px"
+        }
+       }
+      },
+      "quote": {
+       "type": "p",
+       "props": {
+        "text": "\u201cCold brew before the 10 a.m. lectures is now a ritual.\u201d",
+        "style": {
+         "fontStyle": "italic",
+         "opacity": "0.85"
+        }
+       }
+      },
+      "share": {
+       "type": "button",
+       "props": {
+        "text": "Share this recap",
+        "action": "share_recap",
+        "style": {
+         "border": "0",
+         "borderRadius": "99px",
+         "padding": "9px 16px",
+         "background": "#fff7ed",
+         "color": "#78350f",
+         "font": "700 13px system-ui",
+         "cursor": "pointer"
+        }
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action share_recap from the sandbox"
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "replace",
+     "path": "/elements/share/props/text",
+     "value": "Link copied \u2713"
+    }
+   }
+  ]
+ }
+]

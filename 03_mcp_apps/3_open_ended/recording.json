@@ -1,0 +1,136 @@
+[
+ {
+  "api": "mcp",
+  "method": "initialize",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "result": {
+    "protocolVersion": "2025-06-18",
+    "serverInfo": {
+     "name": "weather-open-ended",
+     "version": "1.0.0"
+    },
+    "capabilities": {
+     "tools": {},
+     "resources": {},
+     "extensions": {
+      "io.modelcontextprotocol/ui": {}
+     }
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "notifications/initialized",
+  "json": {}
+ },
+ {
+  "api": "mcp",
+  "method": "tools/list",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 2,
+   "result": {
+    "tools": [
+     {
+      "name": "design_weather_widget",
+      "description": "Design a custom weather widget for a city.",
+      "inputSchema": {
+       "type": "object",
+       "properties": {
+        "city": {
+         "type": "string"
+        },
+        "mood": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ]
+      },
+      "_meta": {
+       "ui": {
+        "resourceUri": "ui://weather/generated.html"
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "api": "chat",
+  "method": "",
+  "json": {
+   "text": "I asked the weather server to design one.",
+   "toolCall": {
+    "name": "design_weather_widget",
+    "arguments": {
+     "city": "Seattle",
+     "mood": "moody, rainy"
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "tools/call",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 3,
+   "result": {
+    "content": [
+     {
+      "type": "text",
+      "text": "Generated a 2277-character widget for Seattle."
+     }
+    ],
+    "structuredContent": {
+     "attempts": 2,
+     "rejected": [
+      [
+       "network URLs are not allowed"
+      ]
+     ]
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "resources/read",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 4,
+   "result": {
+    "contents": [
+     {
+      "uri": "ui://weather/generated.html",
+      "mimeType": "text/html;profile=mcp-app",
+      "text": "<!doctype html>\n<html><head><meta charset=\"utf-8\"><title>seattle-widget</title>\n<style>\n body{margin:0;font:14px system-ui;color:#e8eefc}\n .w{position:relative;overflow:hidden;padding:20px 22px;border-radius:14px;\n    background:linear-gradient(170deg,#1e293b,#334155 55%,#475569)}\n .drop{position:absolute;top:-20px;width:2px;height:16px;background:#93c5fd88;animation:fall 0.9s linear infinite}\n @keyframes fall{to{transform:translateY(260px)}}\n .city{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#93c5fd}\n .now{font:200 64px/1 system-ui;margin:6px 0} .now small{font-size:20px;color:#cbd5e1}\n .row{display:flex;gap:10px;margin:14px 0}.d{flex:1;background:#ffffff14;border-radius:10px;padding:8px;text-align:center}\n button{position:relative;font:600 13px system-ui;padding:9px 14px;border:0;border-radius:99px;background:#93c5fd;color:#0f172a;cursor:pointer}\n</style></head>\n<body><div class=\"w\" id=\"w\">\n <div class=\"city\">Seattle \u00b7 this weekend</div>\n <div class=\"now\">12\u00b0<small> rain, 7\u00b0 tonight</small></div>\n <div class=\"row\"><div class=\"d\">Fri<br>\ud83c\udf27<br>12\u00b0 / 7\u00b0</div><div class=\"d\">Sat<br>\ud83c\udf26<br>14\u00b0 / 8\u00b0</div><div class=\"d\">Sun<br>\u2601<br>16\u00b0 / 9\u00b0</div></div>\n <button id=\"outfit\">What should I wear?</button>\n</div>\n<script>\n for (let i = 0; i < 28; i++) {\n   const d = document.createElement(\"i\"); d.className = \"drop\";\n   d.style.left = (i * 37 % 100) + \"%\"; d.style.animationDelay = (i % 9) / 10 + \"s\";\n   document.getElementById(\"w\").prepend(d);\n }\n let id = 0;\n const rpc = (method, params) => parent.postMessage({jsonrpc: \"2.0\", id: ++id, method, params}, \"*\");\n const note = (method, params) => parent.postMessage({jsonrpc: \"2.0\", method, params}, \"*\");\n addEventListener(\"message\", (e) => {\n   if (e.source === parent && e.data && e.data.id === 1 && e.data.result) {\n     note(\"ui/notifications/initialized\", {});\n     note(\"ui/notifications/size-changed\", {width: 600, height: document.documentElement.scrollHeight});\n   }\n });\n rpc(\"ui/initialize\", {protocolVersion: \"2026-01-26\", appInfo: {name: \"seattle-widget\", version: \"1\"}, appCapabilities: {}});\n document.getElementById(\"outfit\").onclick = () =>\n   rpc(\"ui/message\", {role: \"user\", content: {type: \"text\", text: \"What should I wear in Seattle on Saturday?\"}});\n</script></body></html>",
+      "_meta": {
+       "ui": {
+        "csp": {
+         "connectDomains": [],
+         "resourceDomains": []
+        },
+        "prefersBorder": true
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "api": "chat",
+  "method": "",
+  "json": {
+   "text": "Saturday has showers and 8-14\u00b0C: a light waterproof jacket over a sweater, and boots.",
+   "toolCall": null
+  }
+ }
+]

@@ -1,0 +1,2 @@
+pytest>=8
+playwright>=1.45  # only for run_all.py / demo.py screenshots

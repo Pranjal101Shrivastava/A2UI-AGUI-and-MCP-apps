@@ -1,0 +1,273 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "model called show_view({\"view\": \"sales_overview\", \"title\": \"Coffee cart \u00b7 week 47\", \"highlight\": \"Friday was the best day yet: 104 cups, driven by cold brew before the 10 a.m. lectures.\"})"
+   },
+   {
+    "type": "spec",
+    "spec": {
+     "root": "page",
+     "elements": {
+      "page": {
+       "type": "Column",
+       "children": [
+        "title",
+        "kpis",
+        "chart",
+        "highlight",
+        "items",
+        "inventory"
+       ]
+      },
+      "title": {
+       "type": "Text",
+       "props": {
+        "text": {
+         "$state": "/title"
+        },
+        "variant": "h1"
+       }
+      },
+      "kpis": {
+       "type": "Row",
+       "children": [
+        "revenue",
+        "cups",
+        "top"
+       ]
+      },
+      "revenue": {
+       "type": "Metric",
+       "props": {
+        "label": "Revenue this week",
+        "value": {
+         "$state": "/revenue"
+        }
+       }
+      },
+      "cups": {
+       "type": "Metric",
+       "props": {
+        "label": "Cups sold",
+        "value": {
+         "$state": "/cups"
+        }
+       }
+      },
+      "top": {
+       "type": "Metric",
+       "props": {
+        "label": "Best seller",
+        "value": {
+         "$state": "/top"
+        }
+       }
+      },
+      "chart": {
+       "type": "BarChart",
+       "props": {
+        "title": "Cups per day",
+        "labels": {
+         "$state": "/days"
+        },
+        "values": {
+         "$state": "/cups_by_day"
+        }
+       }
+      },
+      "highlight": {
+       "type": "Text",
+       "props": {
+        "text": {
+         "$state": "/highlight"
+        },
+        "variant": "muted"
+       }
+      },
+      "items": {
+       "type": "Table",
+       "props": {
+        "columns": [
+         "Drink",
+         "Cups",
+         "Price"
+        ],
+        "rows": {
+         "$state": "/items"
+        }
+       }
+      },
+      "inventory": {
+       "type": "Button",
+       "props": {
+        "label": "Check inventory",
+        "action": "show_inventory"
+       }
+      }
+     },
+     "state": {
+      "title": "Coffee cart \u00b7 week 47",
+      "highlight": "Friday was the best day yet: 104 cups, driven by cold brew before the 10 a.m. lectures.",
+      "revenue": "$1,673",
+      "cups": 385,
+      "top": "Latte",
+      "days": [
+       "Mon",
+       "Tue",
+       "Wed",
+       "Thu",
+       "Fri"
+      ],
+      "cups_by_day": [
+       62,
+       71,
+       58,
+       90,
+       104
+      ],
+      "items": [
+       [
+        "Latte",
+        142,
+        "$4.50"
+       ],
+       [
+        "Cold brew",
+        118,
+        "$4.00"
+       ],
+       [
+        "Chai",
+        64,
+        "$4.25"
+       ],
+       [
+        "Mocha",
+        61,
+        "$4.75"
+       ]
+      ]
+     }
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action show_inventory: handled by server code, no model call"
+   },
+   {
+    "type": "spec",
+    "spec": {
+     "root": "page",
+     "elements": {
+      "page": {
+       "type": "Card",
+       "props": {
+        "title": "Inventory"
+       },
+       "children": [
+        "beans",
+        "milk",
+        "cups",
+        "alert",
+        "actions"
+       ]
+      },
+      "beans": {
+       "type": "Progress",
+       "props": {
+        "label": "Coffee beans",
+        "value": {
+         "$state": "/beans_pct"
+        }
+       }
+      },
+      "milk": {
+       "type": "Progress",
+       "props": {
+        "label": "Milk",
+        "value": {
+         "$state": "/milk_pct"
+        }
+       }
+      },
+      "cups": {
+       "type": "Progress",
+       "props": {
+        "label": "Paper cups",
+        "value": {
+         "$state": "/cups_pct"
+        }
+       }
+      },
+      "alert": {
+       "type": "Badge",
+       "props": {
+        "text": {
+         "$state": "/alert"
+        },
+        "tone": "warn"
+       }
+      },
+      "actions": {
+       "type": "Row",
+       "children": [
+        "reorder",
+        "back"
+       ]
+      },
+      "reorder": {
+       "type": "Button",
+       "props": {
+        "label": "Reorder 10 kg beans",
+        "action": "reorder_beans",
+        "variant": "primary"
+       }
+      },
+      "back": {
+       "type": "Button",
+       "props": {
+        "label": "Back to sales",
+        "action": "show_sales"
+       }
+      }
+     },
+     "state": {
+      "title": "Inventory",
+      "beans_pct": 22,
+      "milk_pct": 64,
+      "cups_pct": 85,
+      "alert": "Beans run out in about 2 days"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action reorder_beans: handled by server code, no model call"
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "replace",
+     "path": "/state/alert",
+     "value": "Ordered 10 kg beans \u00b7 arrives Thursday"
+    }
+   }
+  ]
+ }
+]

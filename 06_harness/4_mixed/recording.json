@@ -1,0 +1,291 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "workspace": "genux-harness-4h5eurlt"
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_1_0",
+    "name": "list_files",
+    "args": {}
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_1_0",
+    "name": "list_files",
+    "ok": true,
+    "summary": "calc.py test_calc.py"
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_1_1",
+    "name": "run_tests",
+    "args": {}
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_1_1",
+    "name": "run_tests",
+    "ok": true,
+    "summary": "2/3 passed; failing: test_average test_average (test_calc.CalcTest.test_average) ... FAIL\u2026"
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_2_0",
+    "name": "read_file",
+    "args": {
+     "path": "calc.py"
+    }
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_2_0",
+    "name": "read_file",
+    "ok": true,
+    "summary": "\"\"\"A tiny module with one bug, for the harness to find and fix.\"\"\" def total(values): ret\u2026"
+   },
+   {
+    "type": "TEXT",
+    "text": "I found the bug. Please review the change before I write it."
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_3_0",
+    "name": "render_ui",
+    "args": {
+     "spec": "{\"root\": \"card\", \"elements\": {\"card\": {\"type\": \"Card\", \"pro\u2026",
+     "slot": "review"
+    }
+   },
+   {
+    "type": "UI",
+    "kind": "spec",
+    "slot": "review",
+    "spec": {
+     "root": "card",
+     "elements": {
+      "card": {
+       "type": "Card",
+       "props": {
+        "title": "Review the proposed fix"
+       },
+       "children": [
+        "why",
+        "diff",
+        "buttons"
+       ]
+      },
+      "why": {
+       "type": "Text",
+       "props": {
+        "text": "average() divides by len(values) - 1. The fix divides by len(values)."
+       }
+      },
+      "diff": {
+       "type": "GeneratedView",
+       "props": {
+        "title": "Side-by-side diff",
+        "html": "<style>.g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);font:11px ui-monospace,monospace;background:#0f172a;\ncolor:#cbd5e1;border-radius:8px;overflow:hidden}.h{padding:6px 10px;background:#1e293b;color:#94a3b8;font:600 11px system-ui}\n.l{padding:2px 8px;white-space:pre;overflow:hidden;text-overflow:ellipsis}.l span{color:#475569;margin-right:10px}.del{background:#7f1d1d55}.add{background:#14532d77}</style>\n<div class=\"g\"><div class=\"h\">calc.py \u00b7 before</div><div class=\"h\">calc.py \u00b7 after</div><div class=\"l \"><span>7</span></div><div class=\"l \"><span>7</span></div><div class=\"l \"><span>8</span>def average(values):</div><div class=\"l \"><span>8</span>def average(values):</div><div class=\"l \"><span>9</span>    if not values:</div><div class=\"l \"><span>9</span>    if not values:</div><div class=\"l \"><span>10</span>        return 0.0</div><div class=\"l \"><span>10</span>        return 0.0</div><div class=\"l del\"><span>11</span>    return total(values) / (len(values) - 1)</div><div class=\"l add\"><span>11</span>    return total(values) / len(values)</div></div>",
+        "height": 150
+       }
+      },
+      "buttons": {
+       "type": "Row",
+       "children": [
+        "approve",
+        "reject"
+       ]
+      },
+      "approve": {
+       "type": "Button",
+       "props": {
+        "label": "Approve and write",
+        "action": "approve",
+        "variant": "primary"
+       }
+      },
+      "reject": {
+       "type": "Button",
+       "props": {
+        "label": "Reject",
+        "action": "reject"
+       }
+      }
+     }
+    }
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_3_0",
+    "name": "render_ui",
+    "ok": true,
+    "summary": "shown in slot 'review' (6 elements)"
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_3_1",
+    "name": "write_file",
+    "args": {
+     "path": "calc.py",
+     "content": "\"\"\"A tiny module with one bug, for the harness to find and \u2026"
+    }
+   },
+   {
+    "type": "PAUSED",
+    "id": "call_3_1",
+    "request": "write calc.py (211 chars)"
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "UI",
+    "kind": "spec",
+    "slot": "review",
+    "spec": {
+     "root": "card",
+     "elements": {
+      "card": {
+       "type": "Card",
+       "props": {
+        "title": "Review the proposed fix"
+       },
+       "children": [
+        "why",
+        "diff",
+        "buttons"
+       ]
+      },
+      "why": {
+       "type": "Text",
+       "props": {
+        "text": "average() divides by len(values) - 1. The fix divides by len(values)."
+       }
+      },
+      "diff": {
+       "type": "GeneratedView",
+       "props": {
+        "title": "Side-by-side diff",
+        "html": "<style>.g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);font:11px ui-monospace,monospace;background:#0f172a;\ncolor:#cbd5e1;border-radius:8px;overflow:hidden}.h{padding:6px 10px;background:#1e293b;color:#94a3b8;font:600 11px system-ui}\n.l{padding:2px 8px;white-space:pre;overflow:hidden;text-overflow:ellipsis}.l span{color:#475569;margin-right:10px}.del{background:#7f1d1d55}.add{background:#14532d77}</style>\n<div class=\"g\"><div class=\"h\">calc.py \u00b7 before</div><div class=\"h\">calc.py \u00b7 after</div><div class=\"l \"><span>7</span></div><div class=\"l \"><span>7</span></div><div class=\"l \"><span>8</span>def average(values):</div><div class=\"l \"><span>8</span>def average(values):</div><div class=\"l \"><span>9</span>    if not values:</div><div class=\"l \"><span>9</span>    if not values:</div><div class=\"l \"><span>10</span>        return 0.0</div><div class=\"l \"><span>10</span>        return 0.0</div><div class=\"l del\"><span>11</span>    return total(values) / (len(values) - 1)</div><div class=\"l add\"><span>11</span>    return total(values) / len(values)</div></div>",
+        "height": 150
+       }
+      },
+      "buttons": {
+       "type": "Badge",
+       "props": {
+        "text": "approved",
+        "tone": "ok"
+       }
+      },
+      "approve": {
+       "type": "Button",
+       "props": {
+        "label": "Approve and write",
+        "action": "approve",
+        "variant": "primary"
+       }
+      },
+      "reject": {
+       "type": "Button",
+       "props": {
+        "label": "Reject",
+        "action": "reject"
+       }
+      }
+     }
+    }
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_3_1",
+    "name": "write_file",
+    "ok": true,
+    "summary": "wrote calc.py (211 chars)"
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_4_0",
+    "name": "run_tests",
+    "args": {}
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_4_0",
+    "name": "run_tests",
+    "ok": true,
+    "summary": "3/3 passed test_average (test_calc.CalcTest.test_average) ... ok test_average_empty (test\u2026"
+   },
+   {
+    "type": "TOOL_CALL",
+    "id": "call_4_1",
+    "name": "render_ui",
+    "args": {
+     "spec": "{\"root\": \"s\", \"elements\": {\"s\": {\"type\": \"Card\", \"props\": {\u2026",
+     "slot": "result"
+    }
+   },
+   {
+    "type": "UI",
+    "kind": "spec",
+    "slot": "result",
+    "spec": {
+     "root": "s",
+     "elements": {
+      "s": {
+       "type": "Card",
+       "props": {
+        "title": "Result"
+       },
+       "children": [
+        "row"
+       ]
+      },
+      "row": {
+       "type": "Row",
+       "children": [
+        "tests",
+        "badge"
+       ]
+      },
+      "tests": {
+       "type": "Metric",
+       "props": {
+        "label": "Tests passing",
+        "value": "3/3",
+        "delta": "+1"
+       }
+      },
+      "badge": {
+       "type": "Badge",
+       "props": {
+        "text": "approved by you \u00b7 written \u00b7 verified",
+        "tone": "ok"
+       }
+      }
+     }
+    }
+   },
+   {
+    "type": "TOOL_RESULT",
+    "id": "call_4_1",
+    "name": "render_ui",
+    "ok": true,
+    "summary": "shown in slot 'result' (4 elements)"
+   },
+   {
+    "type": "TEXT",
+    "text": "Written with your approval. All 3 tests pass."
+   },
+   {
+    "type": "RUN_FINISHED"
+   }
+  ]
+ }
+]

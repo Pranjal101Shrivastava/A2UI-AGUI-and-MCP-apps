@@ -1,0 +1,21 @@
+$ python 04_json_render/2_declarative/demo.py
+
+POST api/run  {"prompt":"Build me a dashboard of this week's coffee cart sales"}
+  <- patch x15  (first: {"op":{"op":"add","path":"/root","value":"page"},"t":0.032})
+  <- trace {"text":"final spec valid"}
+POST api/action  {"name":"reorder","context":{},"spec":{"root":"page","elements":{"page":{"type":"Column","children":["title",…
+  <- trace {"text":"action reorder: asking the model for patches against the current spec"}
+  <- patch {"op":{"op":"add","path":"/elements/ordered","value":{"type":"Badge","props":{"text":"Ordered 10 kg beans · arrives Thursday","to…
+  <- patch {"op":{"op":"replace","path":"/elements/page/children/4","value":"ordered"},"t":0.173}
+  <- patch {"op":{"op":"remove","path":"/elements/reorder"},"t":0.208}
+  <- trace {"text":"final spec valid"}
+
+browser console:
+  [genux] first paint after 3 patches (231 ms since page load)
+  [genux] dashboard complete after 15 patches (1218 ms since page load)
+
+bytes the model must write before the first component can be drawn:
+  flat element map, JSONL patches    308 of 1733 (18%)
+  one nested JSON tree              1733 of 1733 (100%: it parses only when complete)
+
+screenshots: demo_before.png, demo.png   (2 request(s), 3.1s)

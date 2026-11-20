@@ -1,0 +1,25 @@
+$ python 02_ag_ui/3_open_ended/demo.py
+
+POST api/run  {"threadId":"thread_309122c9","runId":"run_1795209360122","messages":[{"id":"user_1795209360122","role":"user…
+  <- RUN_STARTED {"threadId":"thread_309122c9","runId":"run_1795209360122"}
+  <- TOOL_CALL_START {"toolCallId":"call_1_0","toolCallName":"render_html"}
+  <- TOOL_CALL_ARGS x11  (first: {"toolCallId":"call_1_0","delta":"{\"html\": \"<style>\\n body{backgro)
+  <- TOOL_CALL_END {"toolCallId":"call_1_0"}
+  <- TOOL_CALL_RESULT {"messageId":"msg_f5678b54","toolCallId":"call_1_0","role":"tool","content":"shown in a sandbox (1579 chars)"}
+  <- TEXT_MESSAGE_START {"messageId":"msg_bf2a62a7","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT x4  (first: {"messageId":"msg_bf2a62a7","delta":"Here is a one-page"})
+  <- TEXT_MESSAGE_END {"messageId":"msg_bf2a62a7"}
+  <- RUN_FINISHED {"threadId":"thread_309122c9","runId":"run_1795209360122"}
+POST api/run  {"threadId":"thread_309122c9","runId":"run_1795209360746","messages":[{"id":"user_1795209360122","role":"user…
+  <- RUN_STARTED {"threadId":"thread_309122c9","runId":"run_1795209360746"}
+  <- TEXT_MESSAGE_START {"messageId":"msg_75485ae6","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_75485ae6","delta":"Saved. You will fi"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_75485ae6","delta":"nd 'Kyoto, slowly'"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_75485ae6","delta":" under My trips."}
+  <- TEXT_MESSAGE_END {"messageId":"msg_75485ae6"}
+  <- RUN_FINISHED {"threadId":"thread_309122c9","runId":"run_1795209360746"}
+
+browser console:
+  [genux] mounted 1579 chars of model HTML in a sandbox
+
+screenshots: demo_before.png, demo.png   (2 request(s), 1.8s)

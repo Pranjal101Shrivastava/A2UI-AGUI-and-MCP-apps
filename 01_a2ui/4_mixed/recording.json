@@ -1,0 +1,163 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "version": "v0.9",
+    "createSurface": {
+     "surfaceId": "room_picker",
+     "catalogId": "genux.local:a2ui/basic-plus-html-v1"
+    }
+   },
+   {
+    "version": "v0.9",
+    "updateComponents": {
+     "surfaceId": "room_picker",
+     "components": [
+      {
+       "id": "root",
+       "component": "Card",
+       "child": "body"
+      },
+      {
+       "id": "body",
+       "component": "Column",
+       "children": [
+        "title",
+        "map",
+        "fields",
+        "status",
+        "book"
+       ]
+      },
+      {
+       "id": "title",
+       "component": "Text",
+       "text": "Pick a room on the map",
+       "variant": "h2"
+      },
+      {
+       "id": "map",
+       "component": "HtmlFrame",
+       "html": "<style>svg{font:12px system-ui}.r{cursor:pointer}.r rect{fill:#c7f0d8;stroke:#334}\n.r.busy rect{fill:#f8c9c4;cursor:not-allowed}.r:hover rect{stroke-width:3}</style>\n<svg viewBox=\"0 0 420 120\" width=\"100%\">\n<g class=\"r\" data-room=\"A7\"><rect x=\"10\" y=\"10\" width=\"100\" height=\"90\" rx=\"6\"/><text x=\"30\" y=\"60\">A7 \u00b7 2</text></g>\n<g class=\"r\" data-room=\"B12\"><rect x=\"130\" y=\"10\" width=\"140\" height=\"90\" rx=\"6\"/><text x=\"170\" y=\"60\">B12 \u00b7 4</text></g>\n<g class=\"r busy\" data-room=\"C3\"><rect x=\"290\" y=\"10\" width=\"120\" height=\"90\" rx=\"6\"/><text x=\"315\" y=\"60\">C3 \u00b7 taken</text></g>\n</svg>\n<script>document.querySelectorAll(\".r:not(.busy)\").forEach(g => g.onclick = () =>\n  genux.send(\"action\", {name: \"select_room\", context: {room: g.dataset.room}}));</script>",
+       "height": 140
+      },
+      {
+       "id": "fields",
+       "component": "Row",
+       "children": [
+        "room",
+        "name"
+       ]
+      },
+      {
+       "id": "room",
+       "component": "TextField",
+       "label": "Room",
+       "value": {
+        "path": "/booking/room"
+       }
+      },
+      {
+       "id": "name",
+       "component": "TextField",
+       "label": "Your name",
+       "value": {
+        "path": "/booking/name"
+       }
+      },
+      {
+       "id": "status",
+       "component": "Text",
+       "text": {
+        "path": "/booking/status"
+       },
+       "variant": "caption"
+      },
+      {
+       "id": "book",
+       "component": "Button",
+       "child": "book_label",
+       "variant": "primary",
+       "action": {
+        "event": {
+         "name": "book",
+         "context": {
+          "room": {
+           "path": "/booking/room"
+          },
+          "name": {
+           "path": "/booking/name"
+          }
+         }
+        }
+       }
+      },
+      {
+       "id": "book_label",
+       "component": "Text",
+       "text": "Book"
+      }
+     ]
+    }
+   },
+   {
+    "version": "v0.9",
+    "updateDataModel": {
+     "surfaceId": "room_picker",
+     "path": "/booking",
+     "value": {
+      "room": "",
+      "name": "",
+      "status": "Free rooms are green."
+     }
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action select_room from map, context={\"room\": \"B12\"}"
+   },
+   {
+    "version": "v0.9",
+    "updateDataModel": {
+     "surfaceId": "room_picker",
+     "path": "/booking/room",
+     "value": "B12"
+    }
+   },
+   {
+    "version": "v0.9",
+    "updateDataModel": {
+     "surfaceId": "room_picker",
+     "path": "/booking/status",
+     "value": "Room B12 \u00b7 Quiet floor \u00b7 Seats 4 \u00b7 whiteboard \u00b7 large display"
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action book from book, context={\"room\": \"B12\", \"name\": \"Alex\"}"
+   },
+   {
+    "version": "v0.9",
+    "updateDataModel": {
+     "surfaceId": "room_picker",
+     "path": "/booking/status",
+     "value": "Booked B12 for Alex, Tomorrow 14:00-16:00 \u2713"
+    }
+   }
+  ]
+ }
+]

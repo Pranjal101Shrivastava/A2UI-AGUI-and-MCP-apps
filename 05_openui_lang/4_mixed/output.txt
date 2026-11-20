@@ -1,0 +1,15 @@
+$ python 05_openui_lang/4_mixed/demo.py
+
+POST api/run  {"prompt":"Help me finish my spring plan: I have CMPE 280 and 281"}
+  <- chunk x50  (first: {"text":"root = Stack([title, top"})
+  <- trace {"text":"program valid"}
+  <- end {}
+POST api/action  {"name":"add_elective","context":{}}
+  <- trace {"text":"action add_elective: the model re-assigns only what changes"}
+  <- chunk x45  (first: {"text":"week = HtmlArtifact(\"<st"})
+  <- trace {"text":"program valid"}
+  <- end {}
+
+the action re-assigned 5 names (week, units, courses, title, actions); the other 5 statements were reused
+
+screenshots: demo_before.png, demo.png   (2 request(s), 3.0s)

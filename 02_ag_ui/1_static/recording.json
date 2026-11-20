@@ -1,0 +1,190 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_6413cdf2",
+    "runId": "run_1795209356564"
+   },
+   {
+    "type": "TOOL_CALL_START",
+    "toolCallId": "call_1_0",
+    "toolCallName": "show_flight"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "{\"flight\": \"JL 5\", \"route\": \"SFO \u2192 KIX\","
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": " \"departs\": \"Fri 11:05\", \"status\": \"On t"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "ime\", \"gate\": \"G98\"}"
+   },
+   {
+    "type": "TOOL_CALL_END",
+    "toolCallId": "call_1_0"
+   },
+   {
+    "type": "TOOL_CALL_RESULT",
+    "messageId": "msg_52edc495",
+    "toolCallId": "call_1_0",
+    "role": "tool",
+    "content": "rendered by the frontend"
+   },
+   {
+    "type": "TOOL_CALL_START",
+    "toolCallId": "call_1_1",
+    "toolCallName": "show_weather"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_1",
+    "delta": "{\"city\": \"Kyoto\", \"days\": [{\"day\": \"Sat\""
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_1",
+    "delta": ", \"high\": 19, \"low\": 11, \"sky\": \"sunny\"}"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_1",
+    "delta": ", {\"day\": \"Sun\", \"high\": 16, \"low\": 10, "
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_1",
+    "delta": "\"sky\": \"rain\"}, {\"day\": \"Mon\", \"high\": 1"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_1",
+    "delta": "8, \"low\": 9, \"sky\": \"cloudy\"}]}"
+   },
+   {
+    "type": "TOOL_CALL_END",
+    "toolCallId": "call_1_1"
+   },
+   {
+    "type": "TOOL_CALL_RESULT",
+    "messageId": "msg_ea940264",
+    "toolCallId": "call_1_1",
+    "role": "tool",
+    "content": "rendered by the frontend"
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_d8595802",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_d8595802",
+    "delta": "Your flight is on "
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_d8595802",
+    "delta": "time, and Kyoto wi"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_d8595802",
+    "delta": "ll be mild with ra"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_d8595802",
+    "delta": "in on Sunday."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_d8595802"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_6413cdf2",
+    "runId": "run_1795209356564"
+   }
+  ]
+ },
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_6413cdf2",
+    "runId": "run_1795209357158"
+   },
+   {
+    "type": "TOOL_CALL_START",
+    "toolCallId": "call_2_0",
+    "toolCallName": "show_flight"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_2_0",
+    "delta": "{\"flight\": \"JL 5\", \"route\": \"SFO \u2192 KIX\","
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_2_0",
+    "delta": " \"departs\": \"Fri 11:05\", \"status\": \"Boar"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_2_0",
+    "delta": "ding\", \"gate\": \"G98\"}"
+   },
+   {
+    "type": "TOOL_CALL_END",
+    "toolCallId": "call_2_0"
+   },
+   {
+    "type": "TOOL_CALL_RESULT",
+    "messageId": "msg_7a426cfc",
+    "toolCallId": "call_2_0",
+    "role": "tool",
+    "content": "rendered by the frontend"
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_77afd8f1",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_77afd8f1",
+    "delta": "Updated: boarding "
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_77afd8f1",
+    "delta": "has started at gat"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_77afd8f1",
+    "delta": "e G98."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_77afd8f1"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_6413cdf2",
+    "runId": "run_1795209357158"
+   }
+  ]
+ }
+]
