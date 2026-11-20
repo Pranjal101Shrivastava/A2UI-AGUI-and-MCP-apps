@@ -1,0 +1,15 @@
+$ python 04_json_render/3_open_ended/demo.py
+
+POST api/run  {"prompt":"Design a poster-style recap of the coffee cart's week"}
+  <- trace {"text":"attempt 1 rejected: poster: style backgroundImage uses a blocked CSS feature; share: prop 'onclick' is not allowed (on* …
+  <- spec {"spec":{"root":"poster","elements":{"poster":{"type":"section","props":{"style":{"background":"linear-gradient(135deg,#78350f,#b…
+POST api/action  {"name":"share_recap","context":{},"spec":{"root":"poster","elements":{"poster":{"type":"section","props":{"s…
+  <- trace {"text":"action share_recap from the sandbox"}
+  <- patch {"op":{"op":"replace","path":"/elements/share/props/text","value":"Link copied ✓"}}
+
+model output size for one screen (tokens, estimated):
+  static (show_view arguments)        42
+  declarative (catalog patches)      433
+  open-ended (HTML-tag spec)         704
+
+screenshots: demo_before.png, demo.png   (2 request(s), 1.7s)

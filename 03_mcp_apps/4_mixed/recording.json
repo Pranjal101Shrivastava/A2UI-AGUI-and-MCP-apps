@@ -1,0 +1,360 @@
+[
+ {
+  "api": "mcp",
+  "method": "initialize",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "result": {
+    "protocolVersion": "2025-06-18",
+    "serverInfo": {
+     "name": "weather-mixed",
+     "version": "1.0.0"
+    },
+    "capabilities": {
+     "tools": {},
+     "resources": {},
+     "extensions": {
+      "io.modelcontextprotocol/ui": {}
+     }
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "notifications/initialized",
+  "json": {}
+ },
+ {
+  "api": "mcp",
+  "method": "tools/list",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 2,
+   "result": {
+    "tools": [
+     {
+      "name": "weather_studio",
+      "description": "Open an interactive weather studio for a city.",
+      "inputSchema": {
+       "type": "object",
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ]
+      },
+      "_meta": {
+       "ui": {
+        "resourceUri": "ui://genux/catalog-view.html"
+       }
+      }
+     },
+     {
+      "name": "refresh_radar",
+      "description": "Re-draw the radar region. Called by the app, not the model.",
+      "inputSchema": {
+       "type": "object",
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ]
+      },
+      "_meta": {
+       "ui": {
+        "visibility": [
+         "app"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "api": "chat",
+  "method": "",
+  "json": {
+   "text": "Opening the studio.",
+   "toolCall": {
+    "name": "weather_studio",
+    "arguments": {
+     "city": "Seattle"
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "tools/call",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 3,
+   "result": {
+    "content": [
+     {
+      "type": "text",
+      "text": "Weather studio for Seattle: 12\u00b0C now, 80% chance of rain."
+     }
+    ],
+    "structuredContent": {
+     "spec": {
+      "root": "page",
+      "elements": {
+       "page": {
+        "type": "Column",
+        "children": [
+         "title",
+         "body",
+         "refresh"
+        ]
+       },
+       "title": {
+        "type": "Text",
+        "props": {
+         "text": "Seattle weather studio",
+         "variant": "h2"
+        }
+       },
+       "body": {
+        "type": "Row",
+        "children": [
+         "left",
+         "radar"
+        ]
+       },
+       "left": {
+        "type": "Column",
+        "children": [
+         "now",
+         "rain",
+         "days"
+        ]
+       },
+       "now": {
+        "type": "Metric",
+        "props": {
+         "label": "Now",
+         "value": "12\u00b0C",
+         "delta": "-2\u00b0 vs yesterday"
+        }
+       },
+       "rain": {
+        "type": "Progress",
+        "props": {
+         "label": "Chance of rain",
+         "value": 80
+        }
+       },
+       "days": {
+        "type": "Table",
+        "props": {
+         "columns": [
+          "Day",
+          "Sky",
+          "High"
+         ],
+         "rows": [
+          [
+           "Fri",
+           "\ud83c\udf27",
+           12
+          ],
+          [
+           "Sat",
+           "\ud83c\udf26",
+           14
+          ],
+          [
+           "Sun",
+           "\u2601",
+           16
+          ]
+         ]
+        }
+       },
+       "radar": {
+        "type": "GeneratedView",
+        "props": {
+         "title": "Radar",
+         "html": "<style>body{background:#0b1220;margin:0}svg{width:100%;height:170px}\n.sweep{transform-origin:110px 85px;animation:s 3s linear infinite}@keyframes s{to{transform:rotate(360deg)}}\n.cell{fill:#38bdf8;opacity:.55;animation:p 2s ease-in-out infinite alternate}@keyframes p{to{opacity:.15}}\ntext{fill:#94a3b8;font:11px system-ui}</style>\n<svg viewBox=\"0 0 320 170\"><circle cx=\"110\" cy=\"85\" r=\"70\" fill=\"none\" stroke=\"#1e3a5f\"/>\n<circle cx=\"110\" cy=\"85\" r=\"40\" fill=\"none\" stroke=\"#1e3a5f\"/>\n<path class=\"sweep\" d=\"M110 85 L180 85 A70 70 0 0 0 160 36 Z\" fill=\"#22d3ee33\"/>\n<ellipse class=\"cell\" cx=\"95\" cy=\"60\" rx=\"22\" ry=\"12\"/><ellipse class=\"cell\" cx=\"135\" cy=\"105\" rx=\"16\" ry=\"9\"/>\n<text x=\"200\" y=\"40\">Seattle radar</text><text x=\"200\" y=\"58\">updated :05</text>\n<text x=\"200\" y=\"76\">rain cells moving east</text></svg>",
+         "height": 190
+        }
+       },
+       "refresh": {
+        "type": "Button",
+        "props": {
+         "label": "Refresh radar",
+         "action": "refresh_radar",
+         "variant": "primary"
+        }
+       }
+      }
+     },
+     "actions": {
+      "refresh_radar": {
+       "tool": "refresh_radar",
+       "arguments": {
+        "city": "Seattle"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "resources/read",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 4,
+   "result": {
+    "contents": [
+     {
+      "uri": "ui://genux/catalog-view.html",
+      "mimeType": "text/html;profile=mcp-app",
+      "text": "<!doctype html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>catalog-view</title>\n<style>:root {\n  --bg: #f6f7fb; --panel: #ffffff; --ink: #1f2430; --muted: #667085; --line: #e3e6ee;\n  --accent: #4f46e5; --accent-soft: #eef0ff; --ok: #0f8a5f; --warn: #b26b00; --bad: #c0362c;\n}\n* { box-sizing: border-box; }\nbody { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, \"Segoe UI\", sans-serif; }\n\n/* page shell */\n.p-head { display: flex; gap: 10px; align-items: center; padding: 10px 20px; background: var(--ink); color: #fff; font-size: 13px; flex-wrap: wrap; }\n.p-head a { color: #c7d2fe; text-decoration: none; font-weight: 600; }\n.p-crumb, .p-mode { padding: 2px 8px; border-radius: 99px; background: #ffffff1f; }\n.p-mode { background: var(--accent); }\n.p-replay { margin-left: auto; color: #fde68a; }\n.p-main { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }\n.p-title { margin: 4px 0; font-size: 24px; }\n.p-blurb { margin: 0 0 12px; color: var(--muted); }\n.p-prompt { display: flex; gap: 8px; }\n.p-prompt input { flex: 1; min-width: 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; font: inherit; }\n.p-prompt button, .c-button { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); font: inherit; cursor: pointer; }\n.p-prompt button, .c-button.c-primary { background: var(--accent); color: #fff; border-color: var(--accent); }\n.p-status { margin: 10px 0; font-size: 13px; color: var(--muted); }\n.p-stage { min-height: 120px; }\n.p-log { margin-top: 18px; background: #11151f; color: #d7dbe6; border-radius: 10px; padding: 8px 12px; font-size: 12px; }\n.p-log summary { cursor: pointer; color: #9aa4bf; }\n.p-log ol { margin: 6px 0 0; padding-left: 22px; max-height: 260px; overflow: auto; }\n.p-log li { margin: 2px 0; word-break: break-all; }\n.p-log b { color: #a5b4fc; font-weight: 600; }\n\n/* catalog components */\n.c-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }\n.c-card-title { margin: 0; font-size: 16px; }\n.c-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: stretch; }\n.c-row > * { flex: 1 1 160px; }\n.c-col { display: flex; flex-direction: column; gap: 12px; }\n.c-text { margin: 0; }\nh1.c-text { font-size: 22px; } h2.c-text { font-size: 18px; }\n.c-muted { color: var(--muted); font-size: 13px; }\n.c-metric { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }\n.c-metric-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }\n.c-metric-value { font-size: 24px; font-weight: 700; }\n.c-delta { font-size: 13px; font-weight: 600; } .c-up { color: var(--ok); } .c-down { color: var(--bad); }\n.c-table { border-collapse: collapse; width: 100%; background: var(--panel); font-size: 14px; }\n.c-table th, .c-table td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); }\n.c-table th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }\n.c-chart { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }\n.c-chart figcaption { font-size: 13px; color: var(--muted); margin-bottom: 4px; }\n.c-chart svg { width: 100%; max-height: 190px; }\n.c-bar { fill: var(--accent); } .c-axis { font-size: 10px; fill: var(--muted); }\n.c-badge { align-self: center; display: inline-block; width: fit-content; padding: 2px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; flex: 0 0 auto !important; }\n.c-ok { background: #dcfce7; color: var(--ok); } .c-warn { background: #fef3c7; color: var(--warn); }\n.c-bad { background: #fee2e2; color: var(--bad); } .c-info { background: var(--accent-soft); color: var(--accent); }\n.c-progress-label { font-size: 13px; margin-bottom: 4px; }\n.c-track { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }\n.c-fill { height: 100%; background: var(--accent); transition: width .3s; }\n.c-field { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }\n.c-field input { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; color: var(--ink); }\n.c-generated { border: 2px dashed #a5b4fc; border-radius: 12px; padding: 8px; background: #fbfbff; }\n.c-generated-title { font-size: 12px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }\n.c-sandbox { width: 100%; border: 0; background: #fff; border-radius: 8px; display: block; }\n.c-placeholder { color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; padding: 8px; }\n.c-error { color: var(--bad); }\n.c-terminal { background: #11151f; color: #d7dbe6; padding: 12px; border-radius: 10px; font: 12px/1.4 ui-monospace, monospace; white-space: pre; overflow: auto; }\n\n@media (max-width: 600px) { .p-main { padding: 12px 16px 32px; } .c-row > * { flex-basis: 100%; } }\n\n/* AG-UI chat column */\n.ag-chat { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }\n.ag-bubble { align-self: flex-start; max-width: 80%; background: var(--accent-soft); border-radius: 12px 12px 12px 2px; padding: 8px 12px; }\n.ag-canvas { display: flex; flex-direction: column; gap: 12px; }\n.ag-approval { border-color: #f59e0b; background: #fffbeb; }\n\n/* MCP Apps host */\n.mcp-user { align-self: flex-end; background: #e7f6ee; border-radius: 12px 12px 2px 12px; }\n.mcp-frame { border: 1px solid var(--line); border-radius: 12px; min-height: 120px; }\n\n/* OpenUI Lang program source */\n.oui-src { margin-top: 14px; }\n.oui-src summary { cursor: pointer; color: var(--muted); font-size: 13px; }\n.oui-src pre { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 12px; overflow: auto; max-height: 260px; white-space: pre-wrap; word-break: break-all; }\n\n/* harness surfaces */\n.h-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr); gap: 16px; align-items: start; }\n.h-steps { margin: 0; padding: 12px 12px 12px 30px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; font-size: 13px; }\n.h-steps li { margin: 4px 0; }\n.h-surface { display: flex; flex-direction: column; gap: 12px; }\n.h-diff { font: 12px/1.45 ui-monospace, monospace; background: #0f172a; color: #cbd5e1; border-radius: 8px; padding: 10px; white-space: pre; overflow: auto; margin: 0; }\n.h-diff .add { color: #86efac; } .h-diff .del { color: #fca5a5; }\n@media (max-width: 760px) { .h-grid { grid-template-columns: 1fr; } }\n</style>\n<style>body { background: #fff; margin: 0; } #app { padding: 12px; }</style>\n<script>\n// The app (view) side of MCP Apps: JSON-RPC 2.0 over postMessage to the host.\n// The server inlines this file into every hand-written view it serves.\n(() => {\n  let next = 0;\n  const pending = new Map();\n  const handlers = {};\n  const request = (method, params) => {\n    const id = ++next;\n    parent.postMessage({ jsonrpc: \"2.0\", id, method, params }, \"*\");\n    return new Promise((resolve, reject) => pending.set(id, { resolve, reject }));\n  };\n  const notify = (method, params) => parent.postMessage({ jsonrpc: \"2.0\", method, params }, \"*\");\n  addEventListener(\"message\", (event) => {\n    if (event.source !== parent) return;\n    const msg = event.data;\n    if (!msg || msg.jsonrpc !== \"2.0\") return;\n    if (msg.id !== undefined && !msg.method) {          // a response to one of our requests\n      const p = pending.get(msg.id);\n      pending.delete(msg.id);\n      if (msg.error) p?.reject(msg.error); else p?.resolve(msg.result);\n      return;\n    }\n    handlers[msg.method]?.(msg.params || {});           // a notification from the host\n  });\n  window.mcpApp = {\n    request, notify,\n    on: (method, fn) => (handlers[method] = fn),\n    async connect() {\n      const init = await request(\"ui/initialize\", { protocolVersion: \"2026-01-26\",\n        appInfo: { name: document.title || \"app\", version: \"1.0.0\" }, appCapabilities: {} });\n      notify(\"ui/notifications/initialized\", {});\n      return init;\n    },\n    resized() {\n      notify(\"ui/notifications/size-changed\", { width: document.body.scrollWidth, height: document.documentElement.scrollHeight });\n    },\n    callTool: (name, args) => request(\"tools/call\", { name, arguments: args }),\n    say: (text) => request(\"ui/message\", { role: \"user\", content: { type: \"text\", text } }),\n  };\n})();\n// Mount model-written HTML in a sandboxed iframe.\n//\n// sandbox=\"allow-scripts\" without allow-same-origin gives the frame an opaque\n// origin: no cookies, no storage, no access to this page's DOM. The CSP meta\n// tag removes the network. The only way out is postMessage, and the parent\n// accepts only messages from this exact frame with an allowed type.\nconst CSP =\n  \"default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; font-src data:\";\n\nconst BRIDGE = `<script>\n  window.genux = {\n    send(type, payload) { parent.postMessage({ source: \"genux-sandbox\", type, payload }, \"*\"); }\n  };\n  addEventListener(\"load\", () => genux.send(\"resize\", { height: document.documentElement.scrollHeight }));\n<\\/script>`;\n\nconst ALLOWED_TYPES = new Set([\"action\", \"resize\", \"log\"]);\n\nfunction wrapHtml(html) {\n  return `<!doctype html><html><head><meta charset=\"utf-8\">\n<meta http-equiv=\"Content-Security-Policy\" content=\"${CSP}\">\n<style>body{margin:0;font:14px system-ui,sans-serif;color:#1f2430}</style>${BRIDGE}</head>\n<body>${html}</body></html>`;\n}\n\nfunction mountSandbox(container, html, { height = 220, onMessage } = {}) {\n  const frame = document.createElement(\"iframe\");\n  frame.setAttribute(\"sandbox\", \"allow-scripts\");\n  frame.className = \"c-sandbox\";\n  frame.style.height = `${height}px`;\n  frame.srcdoc = wrapHtml(html);\n  const listener = (event) => {\n    if (event.source !== frame.contentWindow) return;        // only this frame\n    const msg = event.data || {};\n    if (msg.source !== \"genux-sandbox\" || !ALLOWED_TYPES.has(msg.type)) return;\n    if (msg.type === \"resize\") frame.style.height = `${Math.min(600, Math.max(height, msg.payload.height))}px`;\n    else onMessage?.(msg.type, msg.payload);\n  };\n  window.addEventListener(\"message\", listener);\n  container.append(frame);\n  return frame;\n}\n// The shared component catalog: one hand-written DOM renderer per component name.\n// Every format in this repository resolves to calls of renderComponent().\n// The model never supplies code here: it can only pick a name and fill props.\n\nconst el = (tag, cls, text) => {\n  const node = document.createElement(tag);\n  if (cls) node.className = cls;\n  if (text !== undefined && text !== null) node.textContent = String(text);\n  return node;\n};\n\nconst RENDERERS = {\n  Card(p, kids) {\n    const box = el(\"section\", \"c-card\");\n    if (p.title) box.append(el(\"h3\", \"c-card-title\", p.title));\n    box.append(...kids);\n    return box;\n  },\n  Row(p, kids) {\n    const row = el(\"div\", \"c-row\");\n    row.append(...kids);\n    return row;\n  },\n  Column(p, kids) {\n    const col = el(\"div\", \"c-col\");\n    col.append(...kids);\n    return col;\n  },\n  Text(p) {\n    const tag = { h1: \"h1\", h2: \"h2\" }[p.variant] || \"p\";\n    return el(tag, `c-text c-${p.variant || \"body\"}`, p.text);\n  },\n  Metric(p) {\n    const box = el(\"div\", \"c-metric\");\n    box.append(el(\"div\", \"c-metric-label\", p.label), el(\"div\", \"c-metric-value\", p.value));\n    if (p.delta) box.append(el(\"div\", String(p.delta).startsWith(\"-\") ? \"c-delta c-down\" : \"c-delta c-up\", p.delta));\n    return box;\n  },\n  Table(p) {\n    const table = el(\"table\", \"c-table\");\n    const head = table.createTHead().insertRow();\n    for (const c of p.columns || []) head.append(el(\"th\", \"\", c));\n    const body = table.createTBody();\n    for (const r of p.rows || []) {\n      const tr = body.insertRow();\n      for (const cell of r) tr.append(el(\"td\", \"\", cell));\n    }\n    return table;\n  },\n  BarChart(p) {\n    const box = el(\"figure\", \"c-chart\");\n    box.append(el(\"figcaption\", \"\", p.title));\n    const values = (p.values || []).map(Number);\n    const max = Math.max(1, ...values);\n    const w = 320, h = 140, bw = w / Math.max(1, values.length);\n    const svg = document.createElementNS(\"http://www.w3.org/2000/svg\", \"svg\");\n    svg.setAttribute(\"viewBox\", `0 0 ${w} ${h + 18}`);\n    values.forEach((v, i) => {\n      const bh = (v / max) * h;\n      const rect = document.createElementNS(svg.namespaceURI, \"rect\");\n      Object.entries({ x: i * bw + 4, y: h - bh, width: bw - 8, height: bh, rx: 3, class: \"c-bar\" })\n        .forEach(([k, val]) => rect.setAttribute(k, val));\n      const label = document.createElementNS(svg.namespaceURI, \"text\");\n      Object.entries({ x: i * bw + bw / 2, y: h + 14, \"text-anchor\": \"middle\", class: \"c-axis\" })\n        .forEach(([k, val]) => label.setAttribute(k, val));\n      label.textContent = (p.labels || [])[i] ?? \"\";\n      svg.append(rect, label);\n    });\n    box.append(svg);\n    return box;\n  },\n  Badge(p) {\n    return el(\"span\", `c-badge c-${p.tone || \"info\"}`, p.text);\n  },\n  Progress(p) {\n    const box = el(\"div\", \"c-progress\");\n    box.append(el(\"div\", \"c-progress-label\", `${p.label} \u00b7 ${p.value}%`));\n    const track = el(\"div\", \"c-track\");\n    const fill = el(\"div\", \"c-fill\");\n    fill.style.width = `${Math.max(0, Math.min(100, Number(p.value)))}%`;\n    track.append(fill);\n    box.append(track);\n    return box;\n  },\n  TextField(p, kids, ctx) {\n    const label = el(\"label\", \"c-field\");\n    label.append(el(\"span\", \"\", p.label));\n    const input = el(\"input\");\n    input.value = p.value ?? \"\";\n    if (p.bind) input.oninput = () => ctx.setData?.(p.bind, input.value);\n    label.append(input);\n    return label;\n  },\n  Button(p, kids, ctx) {\n    const button = el(\"button\", `c-button c-${p.variant || \"default\"}`, p.label);\n    button.dataset.action = p.action;\n    button.onclick = () => ctx.onAction?.(p.action, p.context || {});\n    return button;\n  },\n  GeneratedView(p, kids, ctx) {\n    const box = el(\"div\", \"c-generated\");\n    if (p.title) box.append(el(\"div\", \"c-generated-title\", `${p.title} \u00b7 sandboxed`));\n    mountSandbox(box, p.html, { height: p.height || 220, onMessage: ctx.onSandboxMessage });\n    return box;\n  },\n};\n\nfunction renderComponent(type, props = {}, children = [], ctx = {}) {\n  const render = RENDERERS[type];\n  if (!render) return el(\"div\", \"c-error\", `unknown component: ${type}`);\n  return render(props, children, ctx);\n}\n\n// A nested tree: {type, props, children: [node]}.\nfunction renderTree(node, ctx = {}) {\n  if (!node) return el(\"div\", \"c-placeholder\", \"\u2026\");\n  const kids = (node.children || []).map((child) => renderTree(child, ctx));\n  return renderComponent(node.type, node.props || {}, kids, ctx);\n}\n\n// A flat element map: {root, elements: {id: {type, props, children: [id]}}}.\n// Missing ids render as placeholders, so a half-streamed map still paints.\nfunction renderElementMap(spec, ctx = {}) {\n  const seen = new Set();\n  const walk = (id) => {\n    const element = spec.elements?.[id];\n    if (!element || seen.has(id)) return el(\"div\", \"c-placeholder\", \"\u2026\");\n    seen.add(id);\n    const kids = (element.children || []).map(walk);\n    const node = renderComponent(element.type, element.props || {}, kids, ctx);\n    node.dataset.id = id;\n    return node;\n  };\n  return walk(spec.root);\n}\n</script>\n</head>\n<body>\n<div id=\"app\" class=\"c-muted\">waiting for the tool result\u2026</div>\n<script>\n  // A generic view: it draws whatever catalog spec the tool returns.\n  // Buttons name actions; the tool result maps each name to an allowed tool call.\n  let actions = {};\n  const ctx = {\n    onAction(name) {\n      const target = actions[name];\n      if (target) mcpApp.callTool(target.tool, target.arguments).then(render);\n    },\n  };\n  function render(result) {\n    const { spec, actions: next } = result.structuredContent;\n    actions = next || {};\n    document.getElementById(\"app\").className = \"\";\n    document.getElementById(\"app\").replaceChildren(renderElementMap(spec, ctx));\n    setTimeout(() => mcpApp.resized(), 50);\n  }\n  mcpApp.on(\"ui/notifications/tool-result\", render);\n  mcpApp.connect();\n</script>\n</body>\n</html>\n",
+      "_meta": {
+       "ui": {
+        "csp": {
+         "connectDomains": [],
+         "resourceDomains": []
+        },
+        "prefersBorder": true
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "api": "mcp",
+  "method": "tools/call",
+  "json": {
+   "jsonrpc": "2.0",
+   "id": 5,
+   "result": {
+    "content": [
+     {
+      "type": "text",
+      "text": "Weather studio for Seattle: 12\u00b0C now, 80% chance of rain."
+     }
+    ],
+    "structuredContent": {
+     "spec": {
+      "root": "page",
+      "elements": {
+       "page": {
+        "type": "Column",
+        "children": [
+         "title",
+         "body",
+         "refresh"
+        ]
+       },
+       "title": {
+        "type": "Text",
+        "props": {
+         "text": "Seattle weather studio",
+         "variant": "h2"
+        }
+       },
+       "body": {
+        "type": "Row",
+        "children": [
+         "left",
+         "radar"
+        ]
+       },
+       "left": {
+        "type": "Column",
+        "children": [
+         "now",
+         "rain",
+         "days"
+        ]
+       },
+       "now": {
+        "type": "Metric",
+        "props": {
+         "label": "Now",
+         "value": "12\u00b0C",
+         "delta": "-2\u00b0 vs yesterday"
+        }
+       },
+       "rain": {
+        "type": "Progress",
+        "props": {
+         "label": "Chance of rain",
+         "value": 80
+        }
+       },
+       "days": {
+        "type": "Table",
+        "props": {
+         "columns": [
+          "Day",
+          "Sky",
+          "High"
+         ],
+         "rows": [
+          [
+           "Fri",
+           "\ud83c\udf27",
+           12
+          ],
+          [
+           "Sat",
+           "\ud83c\udf26",
+           14
+          ],
+          [
+           "Sun",
+           "\u2601",
+           16
+          ]
+         ]
+        }
+       },
+       "radar": {
+        "type": "GeneratedView",
+        "props": {
+         "title": "Radar",
+         "html": "<style>body{background:#0b1220;margin:0}svg{width:100%;height:170px}\n.sweep{transform-origin:110px 85px;animation:s 3s linear infinite}@keyframes s{to{transform:rotate(360deg)}}\n.cell{fill:#38bdf8;opacity:.55;animation:p 2s ease-in-out infinite alternate}@keyframes p{to{opacity:.15}}\ntext{fill:#94a3b8;font:11px system-ui}</style>\n<svg viewBox=\"0 0 320 170\"><circle cx=\"110\" cy=\"85\" r=\"70\" fill=\"none\" stroke=\"#1e3a5f\"/>\n<circle cx=\"110\" cy=\"85\" r=\"40\" fill=\"none\" stroke=\"#1e3a5f\"/>\n<path class=\"sweep\" d=\"M110 85 L180 85 A70 70 0 0 0 160 36 Z\" fill=\"#22d3ee33\"/>\n<ellipse class=\"cell\" cx=\"110\" cy=\"60\" rx=\"22\" ry=\"12\"/><ellipse class=\"cell\" cx=\"130\" cy=\"105\" rx=\"16\" ry=\"9\"/>\n<text x=\"200\" y=\"40\">Seattle radar</text><text x=\"200\" y=\"58\">updated :20</text>\n<text x=\"200\" y=\"76\">rain cells moving east</text></svg>",
+         "height": 190
+        }
+       },
+       "refresh": {
+        "type": "Button",
+        "props": {
+         "label": "Refresh radar",
+         "action": "refresh_radar",
+         "variant": "primary"
+        }
+       }
+      }
+     },
+     "actions": {
+      "refresh_radar": {
+       "tool": "refresh_radar",
+       "arguments": {
+        "city": "Seattle"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+]

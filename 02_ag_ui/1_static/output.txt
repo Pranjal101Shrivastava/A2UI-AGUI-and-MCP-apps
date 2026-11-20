@@ -1,0 +1,39 @@
+$ python 02_ag_ui/1_static/demo.py
+
+POST api/run  {"threadId":"thread_6413cdf2","runId":"run_1795209356564","messages":[{"id":"user_1795209356564","role":"user…
+  <- RUN_STARTED {"threadId":"thread_6413cdf2","runId":"run_1795209356564"}
+  <- TOOL_CALL_START {"toolCallId":"call_1_0","toolCallName":"show_flight"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_1_0","delta":"{\"flight\": \"JL 5\", \"route\": \"SFO → KIX\","}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_1_0","delta":" \"departs\": \"Fri 11:05\", \"status\": \"On t"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_1_0","delta":"ime\", \"gate\": \"G98\"}"}
+  <- TOOL_CALL_END {"toolCallId":"call_1_0"}
+  <- TOOL_CALL_RESULT {"messageId":"msg_52edc495","toolCallId":"call_1_0","role":"tool","content":"rendered by the frontend"}
+  <- TOOL_CALL_START {"toolCallId":"call_1_1","toolCallName":"show_weather"}
+  <- TOOL_CALL_ARGS x5  (first: {"toolCallId":"call_1_1","delta":"{\"city\": \"Kyoto\", \"days\": [{\")
+  <- TOOL_CALL_END {"toolCallId":"call_1_1"}
+  <- TOOL_CALL_RESULT {"messageId":"msg_ea940264","toolCallId":"call_1_1","role":"tool","content":"rendered by the frontend"}
+  <- TEXT_MESSAGE_START {"messageId":"msg_d8595802","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT x4  (first: {"messageId":"msg_d8595802","delta":"Your flight is on "})
+  <- TEXT_MESSAGE_END {"messageId":"msg_d8595802"}
+  <- RUN_FINISHED {"threadId":"thread_6413cdf2","runId":"run_1795209356564"}
+POST api/run  {"threadId":"thread_6413cdf2","runId":"run_1795209357158","messages":[{"id":"user_1795209356564","role":"user…
+  <- RUN_STARTED {"threadId":"thread_6413cdf2","runId":"run_1795209357158"}
+  <- TOOL_CALL_START {"toolCallId":"call_2_0","toolCallName":"show_flight"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_2_0","delta":"{\"flight\": \"JL 5\", \"route\": \"SFO → KIX\","}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_2_0","delta":" \"departs\": \"Fri 11:05\", \"status\": \"Boar"}
+  <- TOOL_CALL_ARGS {"toolCallId":"call_2_0","delta":"ding\", \"gate\": \"G98\"}"}
+  <- TOOL_CALL_END {"toolCallId":"call_2_0"}
+  <- TOOL_CALL_RESULT {"messageId":"msg_7a426cfc","toolCallId":"call_2_0","role":"tool","content":"rendered by the frontend"}
+  <- TEXT_MESSAGE_START {"messageId":"msg_77afd8f1","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_77afd8f1","delta":"Updated: boarding "}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_77afd8f1","delta":"has started at gat"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_77afd8f1","delta":"e G98."}
+  <- TEXT_MESSAGE_END {"messageId":"msg_77afd8f1"}
+  <- RUN_FINISHED {"threadId":"thread_6413cdf2","runId":"run_1795209357158"}
+
+browser console:
+  [genux] rendered show_flight from 100 streamed chars
+  [genux] rendered show_weather from 191 streamed chars
+  [genux] rendered show_flight from 101 streamed chars
+
+screenshots: demo_before.png, demo.png   (2 request(s), 1.7s)

@@ -1,0 +1,196 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "version": "v0.9",
+    "createSurface": {
+     "surfaceId": "booking_form",
+     "catalogId": "https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"
+    }
+   },
+   {
+    "version": "v0.9",
+    "updateDataModel": {
+     "surfaceId": "booking_form",
+     "path": "/booking",
+     "value": {
+      "name": "",
+      "when": "Tomorrow 14:00-16:00",
+      "people": "4",
+      "room": "B12"
+     }
+    }
+   },
+   {
+    "type": "trace",
+    "text": "validator rejected 2 problem(s): component 'date': unknown type 'DatePicker'; this catalog allows Button, Card, Column, Divider, Row, Text, TextField; people: TextField has no prop 'placeholder'"
+   },
+   {
+    "version": "v0.9",
+    "updateComponents": {
+     "surfaceId": "booking_form",
+     "components": [
+      {
+       "id": "root",
+       "component": "Card",
+       "child": "body"
+      },
+      {
+       "id": "body",
+       "component": "Column",
+       "children": [
+        "title",
+        "hint",
+        "name",
+        "date",
+        "people",
+        "room",
+        "submit"
+       ]
+      },
+      {
+       "id": "title",
+       "component": "Text",
+       "text": "Book a study room",
+       "variant": "h2"
+      },
+      {
+       "id": "hint",
+       "component": "Text",
+       "text": "Check the details, then confirm.",
+       "variant": "caption"
+      },
+      {
+       "id": "name",
+       "component": "TextField",
+       "label": "Your name",
+       "value": {
+        "path": "/booking/name"
+       }
+      },
+      {
+       "id": "date",
+       "component": "TextField",
+       "label": "When",
+       "value": {
+        "path": "/booking/when"
+       }
+      },
+      {
+       "id": "people",
+       "component": "TextField",
+       "label": "People",
+       "value": {
+        "path": "/booking/people"
+       }
+      },
+      {
+       "id": "room",
+       "component": "TextField",
+       "label": "Room",
+       "value": {
+        "path": "/booking/room"
+       }
+      },
+      {
+       "id": "submit",
+       "component": "Button",
+       "child": "submit_label",
+       "variant": "primary",
+       "action": {
+        "event": {
+         "name": "submit_booking",
+         "context": {
+          "name": {
+           "path": "/booking/name"
+          },
+          "when": {
+           "path": "/booking/when"
+          },
+          "people": {
+           "path": "/booking/people"
+          },
+          "room": {
+           "path": "/booking/room"
+          }
+         }
+        }
+       }
+      },
+      {
+       "id": "submit_label",
+       "component": "Text",
+       "text": "Confirm booking"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action submit_booking context={\"name\": \"Alex\", \"when\": \"Tomorrow 14:00-16:00\", \"people\": \"4\", \"room\": \"B12\"}"
+   },
+   {
+    "version": "v0.9",
+    "updateDataModel": {
+     "surfaceId": "booking_form",
+     "path": "/confirmation",
+     "value": {
+      "summary": "Alex, 4 people, Tomorrow 14:00-16:00",
+      "where": "Room B12 \u00b7 Quiet floor \u2014 King Library, 2nd floor"
+     }
+    }
+   },
+   {
+    "version": "v0.9",
+    "updateComponents": {
+     "surfaceId": "booking_form",
+     "components": [
+      {
+       "id": "root",
+       "component": "Card",
+       "child": "done"
+      },
+      {
+       "id": "done",
+       "component": "Column",
+       "children": [
+        "done_title",
+        "done_who",
+        "done_where"
+       ]
+      },
+      {
+       "id": "done_title",
+       "component": "Text",
+       "text": "You're booked",
+       "variant": "h2"
+      },
+      {
+       "id": "done_who",
+       "component": "Text",
+       "text": {
+        "path": "/confirmation/summary"
+       }
+      },
+      {
+       "id": "done_where",
+       "component": "Text",
+       "text": {
+        "path": "/confirmation/where"
+       },
+       "variant": "caption"
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,484 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "chunk",
+    "text": "root = HtmlArtifact(\"<st"
+   },
+   {
+    "type": "chunk",
+    "text": "yle>\\n.t{display:grid;gr"
+   },
+   {
+    "type": "chunk",
+    "text": "id-template-columns:44px"
+   },
+   {
+    "type": "chunk",
+    "text": " repeat(5,1fr);grid-temp"
+   },
+   {
+    "type": "chunk",
+    "text": "late-rows:24px repeat(9,"
+   },
+   {
+    "type": "chunk",
+    "text": "26px);gap:3px;font:12px "
+   },
+   {
+    "type": "chunk",
+    "text": "system-ui;padding:8px}\\n"
+   },
+   {
+    "type": "chunk",
+    "text": ".h{color:#667085;text-al"
+   },
+   {
+    "type": "chunk",
+    "text": "ign:center} .r{color:#98"
+   },
+   {
+    "type": "chunk",
+    "text": "a2b3;font-size:11px}\\n.b"
+   },
+   {
+    "type": "chunk",
+    "text": "{color:#fff;border-radiu"
+   },
+   {
+    "type": "chunk",
+    "text": "s:8px;padding:6px;font-w"
+   },
+   {
+    "type": "chunk",
+    "text": "eight:600;cursor:pointer"
+   },
+   {
+    "type": "chunk",
+    "text": ";box-shadow:0 2px 6px #0"
+   },
+   {
+    "type": "chunk",
+    "text": "002}\\n.b small{display:b"
+   },
+   {
+    "type": "chunk",
+    "text": "lock;font-weight:400;opa"
+   },
+   {
+    "type": "chunk",
+    "text": "city:.85} .b:hover{filte"
+   },
+   {
+    "type": "chunk",
+    "text": "r:brightness(1.1)}\\n</st"
+   },
+   {
+    "type": "chunk",
+    "text": "yle><div class=\\\"t\\\"><di"
+   },
+   {
+    "type": "chunk",
+    "text": "v></div><div class=\\\"h\\\""
+   },
+   {
+    "type": "chunk",
+    "text": ">Mon</div><div class=\\\"h"
+   },
+   {
+    "type": "chunk",
+    "text": "\\\">Tue</div><div class=\\"
+   },
+   {
+    "type": "chunk",
+    "text": "\"h\\\">Wed</div><div class"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"h\\\">Thu</div><div cla"
+   },
+   {
+    "type": "chunk",
+    "text": "ss=\\\"h\\\">Fri</div>\\n<div"
+   },
+   {
+    "type": "chunk",
+    "text": " class=\\\"r\\\" style=\\\"gri"
+   },
+   {
+    "type": "chunk",
+    "text": "d-row:2;grid-column:1\\\">"
+   },
+   {
+    "type": "chunk",
+    "text": "13:00</div><div class=\\\""
+   },
+   {
+    "type": "chunk",
+    "text": "r\\\" style=\\\"grid-row:3;g"
+   },
+   {
+    "type": "chunk",
+    "text": "rid-column:1\\\">14:00</di"
+   },
+   {
+    "type": "chunk",
+    "text": "v><div class=\\\"r\\\" style"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"grid-row:4;grid-colum"
+   },
+   {
+    "type": "chunk",
+    "text": "n:1\\\">15:00</div><div cl"
+   },
+   {
+    "type": "chunk",
+    "text": "ass=\\\"r\\\" style=\\\"grid-r"
+   },
+   {
+    "type": "chunk",
+    "text": "ow:5;grid-column:1\\\">16:"
+   },
+   {
+    "type": "chunk",
+    "text": "00</div><div class=\\\"r\\\""
+   },
+   {
+    "type": "chunk",
+    "text": " style=\\\"grid-row:6;grid"
+   },
+   {
+    "type": "chunk",
+    "text": "-column:1\\\">17:00</div><"
+   },
+   {
+    "type": "chunk",
+    "text": "div class=\\\"r\\\" style=\\\""
+   },
+   {
+    "type": "chunk",
+    "text": "grid-row:7;grid-column:1"
+   },
+   {
+    "type": "chunk",
+    "text": "\\\">18:00</div><div class"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"r\\\" style=\\\"grid-row:"
+   },
+   {
+    "type": "chunk",
+    "text": "8;grid-column:1\\\">19:00<"
+   },
+   {
+    "type": "chunk",
+    "text": "/div><div class=\\\"r\\\" st"
+   },
+   {
+    "type": "chunk",
+    "text": "yle=\\\"grid-row:9;grid-co"
+   },
+   {
+    "type": "chunk",
+    "text": "lumn:1\\\">20:00</div><div"
+   },
+   {
+    "type": "chunk",
+    "text": " class=\\\"r\\\" style=\\\"gri"
+   },
+   {
+    "type": "chunk",
+    "text": "d-row:10;grid-column:1\\\""
+   },
+   {
+    "type": "chunk",
+    "text": ">21:00</div>\\n<div class"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"b\\\" data-code=\\\"CMPE "
+   },
+   {
+    "type": "chunk",
+    "text": "280\\\" style=\\\"grid-colum"
+   },
+   {
+    "type": "chunk",
+    "text": "n:2;grid-row:7 / span 3;"
+   },
+   {
+    "type": "chunk",
+    "text": "background:#4f46e5\\\">CMP"
+   },
+   {
+    "type": "chunk",
+    "text": "E 280<small>18:00</small"
+   },
+   {
+    "type": "chunk",
+    "text": "></div><div class=\\\"b\\\" "
+   },
+   {
+    "type": "chunk",
+    "text": "data-code=\\\"CMPE 280\\\" s"
+   },
+   {
+    "type": "chunk",
+    "text": "tyle=\\\"grid-column:4;gri"
+   },
+   {
+    "type": "chunk",
+    "text": "d-row:7 / span 3;backgro"
+   },
+   {
+    "type": "chunk",
+    "text": "und:#4f46e5\\\">CMPE 280<s"
+   },
+   {
+    "type": "chunk",
+    "text": "mall>18:00</small></div>"
+   },
+   {
+    "type": "chunk",
+    "text": "<div class=\\\"b\\\" data-co"
+   },
+   {
+    "type": "chunk",
+    "text": "de=\\\"CMPE 281\\\" style=\\\""
+   },
+   {
+    "type": "chunk",
+    "text": "grid-column:3;grid-row:7"
+   },
+   {
+    "type": "chunk",
+    "text": " / span 3;background:#0f"
+   },
+   {
+    "type": "chunk",
+    "text": "8a5f\\\">CMPE 281<small>18"
+   },
+   {
+    "type": "chunk",
+    "text": ":00</small></div><div cl"
+   },
+   {
+    "type": "chunk",
+    "text": "ass=\\\"b\\\" data-code=\\\"CM"
+   },
+   {
+    "type": "chunk",
+    "text": "PE 281\\\" style=\\\"grid-co"
+   },
+   {
+    "type": "chunk",
+    "text": "lumn:5;grid-row:7 / span"
+   },
+   {
+    "type": "chunk",
+    "text": " 3;background:#0f8a5f\\\">"
+   },
+   {
+    "type": "chunk",
+    "text": "CMPE 281<small>18:00</sm"
+   },
+   {
+    "type": "chunk",
+    "text": "all></div><div class=\\\"b"
+   },
+   {
+    "type": "chunk",
+    "text": "\\\" data-code=\\\"CMPE 258\\"
+   },
+   {
+    "type": "chunk",
+    "text": "\" style=\\\"grid-column:6;"
+   },
+   {
+    "type": "chunk",
+    "text": "grid-row:4 / span 3;back"
+   },
+   {
+    "type": "chunk",
+    "text": "ground:#b45309\\\">CMPE 25"
+   },
+   {
+    "type": "chunk",
+    "text": "8<small>15:00</small></d"
+   },
+   {
+    "type": "chunk",
+    "text": "iv></div>\\n<script>docum"
+   },
+   {
+    "type": "chunk",
+    "text": "ent.querySelectorAll(\\\"."
+   },
+   {
+    "type": "chunk",
+    "text": "b\\\").forEach((b) => b.on"
+   },
+   {
+    "type": "chunk",
+    "text": "click = () =>\\n  genux.s"
+   },
+   {
+    "type": "chunk",
+    "text": "end(\\\"action\\\", {name: \\"
+   },
+   {
+    "type": "chunk",
+    "text": "\"course_details\\\", conte"
+   },
+   {
+    "type": "chunk",
+    "text": "xt: {code: b.dataset.cod"
+   },
+   {
+    "type": "chunk",
+    "text": "e}}));</script>\", \"Sprin"
+   },
+   {
+    "type": "chunk",
+    "text": "g 2027 timetable\", 330)"
+   },
+   {
+    "type": "chunk",
+    "text": "\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action course_details CMPE 281 from the sandbox"
+   },
+   {
+    "type": "chunk",
+    "text": "root = HtmlArtifact(\"<st"
+   },
+   {
+    "type": "chunk",
+    "text": "yle>.d{font:14px system-"
+   },
+   {
+    "type": "chunk",
+    "text": "ui;padding:14px}.d h2{ma"
+   },
+   {
+    "type": "chunk",
+    "text": "rgin:0 0 4px}.k{color:#6"
+   },
+   {
+    "type": "chunk",
+    "text": "67085}\\n.chip{display:in"
+   },
+   {
+    "type": "chunk",
+    "text": "line-block;background:#e"
+   },
+   {
+    "type": "chunk",
+    "text": "ef0ff;color:#4f46e5;bord"
+   },
+   {
+    "type": "chunk",
+    "text": "er-radius:99px;padding:2"
+   },
+   {
+    "type": "chunk",
+    "text": "px 9px;margin:8px 6px 0 "
+   },
+   {
+    "type": "chunk",
+    "text": "0}</style>\\n<div class=\\"
+   },
+   {
+    "type": "chunk",
+    "text": "\"d\\\"><h2>CMPE 281 \\u00b7"
+   },
+   {
+    "type": "chunk",
+    "text": " Cloud Technologies</h2>"
+   },
+   {
+    "type": "chunk",
+    "text": "<div class=\\\"k\\\">Tue/Thu"
+   },
+   {
+    "type": "chunk",
+    "text": " 18:00-20:45 \\u00b7 Engi"
+   },
+   {
+    "type": "chunk",
+    "text": "neering 189</div>\\n<p>Vi"
+   },
+   {
+    "type": "chunk",
+    "text": "rtualization, containers"
+   },
+   {
+    "type": "chunk",
+    "text": ", serverless and cloud-n"
+   },
+   {
+    "type": "chunk",
+    "text": "ative design. 2 seats le"
+   },
+   {
+    "type": "chunk",
+    "text": "ft.</p>\\n<span class=\\\"c"
+   },
+   {
+    "type": "chunk",
+    "text": "hip\\\">3 units</span><spa"
+   },
+   {
+    "type": "chunk",
+    "text": "n class=\\\"chip\\\">project"
+   },
+   {
+    "type": "chunk",
+    "text": "-based</span><span class"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"chip\\\">prereq: CMPE 2"
+   },
+   {
+    "type": "chunk",
+    "text": "02</span></div>\", \"CMPE "
+   },
+   {
+    "type": "chunk",
+    "text": "281\", 200)"
+   },
+   {
+    "type": "chunk",
+    "text": "\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ }
+]

@@ -1,0 +1,33 @@
+$ python 02_ag_ui/2_declarative/demo.py
+
+POST api/run  {"threadId":"thread_ab313e8c","runId":"run_1795209358382","messages":[{"id":"user_1795209358382","role":"user…
+  <- RUN_STARTED {"threadId":"thread_ab313e8c","runId":"run_1795209358382"}
+  <- STATE_SNAPSHOT {"snapshot":{"ui":{"type":"Column","children":[{"type":"Text","props":{"text":"Kyoto · 3-day plan","variant":"h1"}},{"type":"Row"…
+  <- STEP_STARTED {"stepName":"edit_ui"}
+  <- STATE_DELTA x4  (first: {"delta":[{"op":"add","path":"/ui","value":{"type":"Column","children")
+  <- STEP_FINISHED {"stepName":"edit_ui"}
+  <- CUSTOM {"name":"validation_errors","value":["/ui/children/1/children/1: unknown component 'Map'; allowed: Badge, BarChart, Button, Card,…
+  <- STEP_STARTED {"stepName":"edit_ui"}
+  <- STATE_DELTA {"delta":[{"op":"add","path":"/ui/children/1/children/1","value":{"type":"Card","props":{"title":"Sun · Arashiyama"},"children":[…
+  <- STEP_FINISHED {"stepName":"edit_ui"}
+  <- TEXT_MESSAGE_START {"messageId":"msg_9e2025d5","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_9e2025d5","delta":"Plan ready."}
+  <- TEXT_MESSAGE_END {"messageId":"msg_9e2025d5"}
+  <- RUN_FINISHED {"threadId":"thread_ab313e8c","runId":"run_1795209358382"}
+POST api/run  {"threadId":"thread_ab313e8c","runId":"run_1795209358974","messages":[{"id":"user_1795209358382","role":"user…
+  <- RUN_STARTED {"threadId":"thread_ab313e8c","runId":"run_1795209358974"}
+  <- STATE_SNAPSHOT {"snapshot":{"ui":{"type":"Column","children":[{"type":"Text","props":{"text":"Kyoto · 3-day plan","variant":"h1"}},{"type":"Row"…
+  <- STEP_STARTED {"stepName":"edit_ui"}
+  <- STATE_DELTA {"delta":[{"op":"replace","path":"/ui/children/1/children/1","value":{"type":"Card","props":{"title":"Sun · Indoor Kyoto"},"child…
+  <- STATE_DELTA {"delta":[{"op":"replace","path":"/ui/children/2/props/value","value":"¥66,500"}]}
+  <- STEP_FINISHED {"stepName":"edit_ui"}
+  <- TEXT_MESSAGE_START {"messageId":"msg_5aa29455","role":"assistant"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_5aa29455","delta":"Sunday is now an i"}
+  <- TEXT_MESSAGE_CONTENT {"messageId":"msg_5aa29455","delta":"ndoor day."}
+  <- TEXT_MESSAGE_END {"messageId":"msg_5aa29455"}
+  <- RUN_FINISHED {"threadId":"thread_ab313e8c","runId":"run_1795209358974"}
+
+browser console:
+  [genux] server rejected: /ui/children/1/children/1: unknown component 'Map'; allowed: Badge, BarChart, Button, Card, Column, GeneratedView, Metric, Progress, Row, Table, Text, TextField
+
+screenshots: demo_before.png, demo.png   (2 request(s), 1.8s)

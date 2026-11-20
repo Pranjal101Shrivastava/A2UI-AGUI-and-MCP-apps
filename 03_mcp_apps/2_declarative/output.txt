@@ -1,0 +1,30 @@
+$ python 03_mcp_apps/2_declarative/demo.py
+
+POST api/mcp  initialize  {"protocolVersion":"2025-06-18","clientInfo":{"name":"genux-host"},"capabilities":{"extensions":{"io.modelcon…
+  <- {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-06-18","serverInfo":{"name":"weather-declarative","version":"1.0.0"},"capabilities":{"tools…
+POST api/mcp  notifications/initialized  {}
+  <- {}
+POST api/mcp  tools/list  {}
+  <- {"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"weather_dashboard","description":"A weather dashboard for a city (Seattle or San Jose).","inputSc…
+POST api/chat  {"messages":[{"role":"user","content":"Give me a weather dashboard for Seattle"}],"tools":["weather_dashboard…
+  <- {"text":"Here is a dashboard for Seattle.","toolCall":{"name":"weather_dashboard","arguments":{"city":"Seattle"}}}
+POST api/mcp  tools/call  {"name":"weather_dashboard","arguments":{"city":"Seattle"}}
+  <- {"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"Seattle: Fri 12°C/7°C rain; Sat 14°C/8°C showers; Sun 16°C/9°C cloudy"}],"structu…
+POST api/mcp  resources/read  {"uri":"ui://genux/catalog-view.html"}
+  <- {"jsonrpc":"2.0","id":4,"result":{"contents":[{"uri":"ui://genux/catalog-view.html","mimeType":"text/html;profile=mcp-app","text":"<!doctype html>\n<…
+POST api/mcp  tools/call  {"name":"weather_dashboard","arguments":{"city":"Seattle","days":5}}
+  <- {"jsonrpc":"2.0","id":5,"result":{"content":[{"type":"text","text":"Seattle: Fri 12°C/7°C rain; Sat 14°C/8°C showers; Sun 16°C/9°C cloudy; Mon 18°C/1…
+
+browser console:
+  [genux] host         mount ui://genux/catalog-view.html (text/html;profile=mcp-app) in iframe sandbox="allow-scripts"
+  [genux] view → host  ui/initialize {"protocolVersion":"2026-01-26","appInfo":{"name":"catalog-view","version":"1.0.0"},"appCa
+  [genux] host → view  response #1
+  [genux] view → host  ui/notifications/initialized {}
+  [genux] host → view  ui/notifications/tool-input
+  [genux] host → view  ui/notifications/tool-result
+  [genux] view → host  ui/notifications/size-changed {"width":946,"height":583}
+  [genux] view → host  tools/call {"name":"weather_dashboard","arguments":{"city":"Seattle","days":5}}
+  [genux] host → view  response #2
+  [genux] view → host  ui/notifications/size-changed {"width":946,"height":650}
+
+screenshots: demo_before.png, demo.png   (7 request(s), 2.4s)

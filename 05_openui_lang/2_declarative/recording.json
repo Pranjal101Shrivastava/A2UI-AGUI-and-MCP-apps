@@ -1,0 +1,236 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "chunk",
+    "text": "root = Stack([title, sum"
+   },
+   {
+    "type": "chunk",
+    "text": "mary, plan, chart, actio"
+   },
+   {
+    "type": "chunk",
+    "text": "ns])\ntitle = Text(\"Sprin"
+   },
+   {
+    "type": "chunk",
+    "text": "g 2027 \u00b7 suggested plan\""
+   },
+   {
+    "type": "chunk",
+    "text": ", \"h1\")\nsummary = Stack("
+   },
+   {
+    "type": "chunk",
+    "text": "[units, evenings, risk],"
+   },
+   {
+    "type": "chunk",
+    "text": " \"row\")\nunits = Metric(\""
+   },
+   {
+    "type": "chunk",
+    "text": "Units\", 9, \"full-time\")\n"
+   },
+   {
+    "type": "chunk",
+    "text": "evenings = Metric(\"Days "
+   },
+   {
+    "type": "chunk",
+    "text": "on campus\", 5)\nrisk = Ba"
+   },
+   {
+    "type": "chunk",
+    "text": "dge(\"CMPE 281 has 2 seat"
+   },
+   {
+    "type": "chunk",
+    "text": "s left: enroll soon\", \"w"
+   },
+   {
+    "type": "chunk",
+    "text": "arn\")\nplan = Table([\"Cou"
+   },
+   {
+    "type": "chunk",
+    "text": "rse\", \"Title\", \"When\", \""
+   },
+   {
+    "type": "chunk",
+    "text": "Seats\"], rows)\nrows = [["
+   },
+   {
+    "type": "chunk",
+    "text": "\"CMPE 280\", \"Web UI Desi"
+   },
+   {
+    "type": "chunk",
+    "text": "gn and Development\", \"Mo"
+   },
+   {
+    "type": "chunk",
+    "text": "n/Wed 18:00\", 12], [\"CMP"
+   },
+   {
+    "type": "chunk",
+    "text": "E 281\", \"Cloud Technolog"
+   },
+   {
+    "type": "chunk",
+    "text": "ies\", \"Tue/Thu 18:00\", 2"
+   },
+   {
+    "type": "chunk",
+    "text": "], [\"CMPE 258\", \"Deep Le"
+   },
+   {
+    "type": "chunk",
+    "text": "arning\", \"Fri 15:00\", 5]"
+   },
+   {
+    "type": "chunk",
+    "text": "]\nchart = BarChart(\"Expe"
+   },
+   {
+    "type": "chunk",
+    "text": "cted hours per week\", [\""
+   },
+   {
+    "type": "chunk",
+    "text": "CMPE 280\", \"CMPE 281\", \""
+   },
+   {
+    "type": "chunk",
+    "text": "CMPE 258\"], [9, 8, 10])\n"
+   },
+   {
+    "type": "chunk",
+    "text": "actions = Stack([enroll,"
+   },
+   {
+    "type": "chunk",
+    "text": " fridays], \"row\")\nenroll"
+   },
+   {
+    "type": "chunk",
+    "text": " = Button(\"Enroll in all"
+   },
+   {
+    "type": "chunk",
+    "text": " three\", \"enroll_all\", \""
+   },
+   {
+    "type": "chunk",
+    "text": "primary\")\nfridays = Butt"
+   },
+   {
+    "type": "chunk",
+    "text": "on(\"Keep Fridays free\", "
+   },
+   {
+    "type": "chunk",
+    "text": "\"avoid_friday\")\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action avoid_friday: the model answers with replacement statements"
+   },
+   {
+    "type": "chunk",
+    "text": "rows = [[\"CMPE 280\", \"We"
+   },
+   {
+    "type": "chunk",
+    "text": "b UI Design and Developm"
+   },
+   {
+    "type": "chunk",
+    "text": "ent\", \"Mon/Wed 18:00\", 1"
+   },
+   {
+    "type": "chunk",
+    "text": "2], [\"CMPE 281\", \"Cloud "
+   },
+   {
+    "type": "chunk",
+    "text": "Technologies\", \"Tue/Thu "
+   },
+   {
+    "type": "chunk",
+    "text": "18:00\", 2], [\"CMPE 272\","
+   },
+   {
+    "type": "chunk",
+    "text": " \"Enterprise Software Pl"
+   },
+   {
+    "type": "chunk",
+    "text": "atforms\", \"Mon/Wed 18:00"
+   },
+   {
+    "type": "chunk",
+    "text": "\", 9]]\nchart = BarChart("
+   },
+   {
+    "type": "chunk",
+    "text": "\"Expected hours per week"
+   },
+   {
+    "type": "chunk",
+    "text": "\", [\"CMPE 280\", \"CMPE 28"
+   },
+   {
+    "type": "chunk",
+    "text": "1\", \"CMPE 272\"], [9, 8, "
+   },
+   {
+    "type": "chunk",
+    "text": "7])\nevenings = Metric(\"D"
+   },
+   {
+    "type": "chunk",
+    "text": "ays on campus\", 4, \"-1\")"
+   },
+   {
+    "type": "chunk",
+    "text": "\nrisk = Badge(\"CMPE 272 "
+   },
+   {
+    "type": "chunk",
+    "text": "and CMPE 280 meet at the"
+   },
+   {
+    "type": "chunk",
+    "text": " same time: pick one\", \""
+   },
+   {
+    "type": "chunk",
+    "text": "bad\")\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ }
+]

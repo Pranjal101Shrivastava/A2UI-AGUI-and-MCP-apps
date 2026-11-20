@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>catalog-view</title>
+<!--CATALOG_CSS-->
+<style>body { background: #fff; margin: 0; } #app { padding: 12px; }</style>
+<!--APP_BRIDGE-->
+</head>
+<body>
+<div id="app" class="c-muted">waiting for the tool result…</div>
+<script>
+  // A generic view: it draws whatever catalog spec the tool returns.
+  // Buttons name actions; the tool result maps each name to an allowed tool call.
+  let actions = {};
+  const ctx = {
+    onAction(name) {
+      const target = actions[name];
+      if (target) mcpApp.callTool(target.tool, target.arguments).then(render);
+    },
+  };
+  function render(result) {
+    const { spec, actions: next } = result.structuredContent;
+    actions = next || {};
+    document.getElementById("app").className = "";
+    document.getElementById("app").replaceChildren(renderElementMap(spec, ctx));
+    setTimeout(() => mcpApp.resized(), 50);
+  }
+  mcpApp.on("ui/notifications/tool-result", render);
+  mcpApp.connect();
+</script>
+</body>
+</html>

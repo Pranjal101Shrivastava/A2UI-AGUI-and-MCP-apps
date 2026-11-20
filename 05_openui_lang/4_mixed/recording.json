@@ -1,0 +1,412 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "chunk",
+    "text": "root = Stack([title, top"
+   },
+   {
+    "type": "chunk",
+    "text": ", courses, actions])\ntit"
+   },
+   {
+    "type": "chunk",
+    "text": "le = Text(\"Spring 2027 \u00b7"
+   },
+   {
+    "type": "chunk",
+    "text": " 6 units so far\", \"h1\")\n"
+   },
+   {
+    "type": "chunk",
+    "text": "top = Stack([week, side]"
+   },
+   {
+    "type": "chunk",
+    "text": ", \"row\")\nweek = HtmlArti"
+   },
+   {
+    "type": "chunk",
+    "text": "fact(\"<style>.w{display:"
+   },
+   {
+    "type": "chunk",
+    "text": "grid;grid-template-colum"
+   },
+   {
+    "type": "chunk",
+    "text": "ns:repeat(5,1fr);gap:4px"
+   },
+   {
+    "type": "chunk",
+    "text": ";font:12px system-ui;pad"
+   },
+   {
+    "type": "chunk",
+    "text": "ding:6px}.d{color:#66708"
+   },
+   {
+    "type": "chunk",
+    "text": "5;text-align:center}.b{g"
+   },
+   {
+    "type": "chunk",
+    "text": "rid-row:2;color:#fff;bor"
+   },
+   {
+    "type": "chunk",
+    "text": "der-radius:8px;padding:1"
+   },
+   {
+    "type": "chunk",
+    "text": "8px 4px;text-align:cente"
+   },
+   {
+    "type": "chunk",
+    "text": "r;font-weight:600}</styl"
+   },
+   {
+    "type": "chunk",
+    "text": "e><div class=\\\"w\\\"><div "
+   },
+   {
+    "type": "chunk",
+    "text": "class=\\\"d\\\">Mon</div><di"
+   },
+   {
+    "type": "chunk",
+    "text": "v class=\\\"d\\\">Tue</div><"
+   },
+   {
+    "type": "chunk",
+    "text": "div class=\\\"d\\\">Wed</div"
+   },
+   {
+    "type": "chunk",
+    "text": "><div class=\\\"d\\\">Thu</d"
+   },
+   {
+    "type": "chunk",
+    "text": "iv><div class=\\\"d\\\">Fri<"
+   },
+   {
+    "type": "chunk",
+    "text": "/div><div class=\\\"b\\\" st"
+   },
+   {
+    "type": "chunk",
+    "text": "yle=\\\"grid-column:1;back"
+   },
+   {
+    "type": "chunk",
+    "text": "ground:#4f46e5\\\">CMPE 28"
+   },
+   {
+    "type": "chunk",
+    "text": "0</div><div class=\\\"b\\\" "
+   },
+   {
+    "type": "chunk",
+    "text": "style=\\\"grid-column:2;ba"
+   },
+   {
+    "type": "chunk",
+    "text": "ckground:#0f8a5f\\\">CMPE "
+   },
+   {
+    "type": "chunk",
+    "text": "281</div><div class=\\\"b\\"
+   },
+   {
+    "type": "chunk",
+    "text": "\" style=\\\"grid-column:3;"
+   },
+   {
+    "type": "chunk",
+    "text": "background:#4f46e5\\\">CMP"
+   },
+   {
+    "type": "chunk",
+    "text": "E 280</div><div class=\\\""
+   },
+   {
+    "type": "chunk",
+    "text": "b\\\" style=\\\"grid-column:"
+   },
+   {
+    "type": "chunk",
+    "text": "4;background:#0f8a5f\\\">C"
+   },
+   {
+    "type": "chunk",
+    "text": "MPE 281</div></div>\", \"T"
+   },
+   {
+    "type": "chunk",
+    "text": "his week\", 120)\nside = S"
+   },
+   {
+    "type": "chunk",
+    "text": "tack([units, seats], \"co"
+   },
+   {
+    "type": "chunk",
+    "text": "lumn\")\nunits = Metric(\"U"
+   },
+   {
+    "type": "chunk",
+    "text": "nits\", 6, \"-3 to full-ti"
+   },
+   {
+    "type": "chunk",
+    "text": "me\")\nseats = Progress(\"S"
+   },
+   {
+    "type": "chunk",
+    "text": "eats taken in CMPE 281\","
+   },
+   {
+    "type": "chunk",
+    "text": " 93)\ncourses = Table([\"C"
+   },
+   {
+    "type": "chunk",
+    "text": "ourse\", \"When\"], [[\"CMPE"
+   },
+   {
+    "type": "chunk",
+    "text": " 280\", \"Mon/Wed 18:00\"],"
+   },
+   {
+    "type": "chunk",
+    "text": " [\"CMPE 281\", \"Tue/Thu 1"
+   },
+   {
+    "type": "chunk",
+    "text": "8:00\"]])\nactions = Stack"
+   },
+   {
+    "type": "chunk",
+    "text": "([add], \"row\")\nadd = But"
+   },
+   {
+    "type": "chunk",
+    "text": "ton(\"Add a Friday electi"
+   },
+   {
+    "type": "chunk",
+    "text": "ve\", \"add_elective\", \"pr"
+   },
+   {
+    "type": "chunk",
+    "text": "imary\")\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action add_elective: the model re-assigns only what changes"
+   },
+   {
+    "type": "chunk",
+    "text": "week = HtmlArtifact(\"<st"
+   },
+   {
+    "type": "chunk",
+    "text": "yle>.w{display:grid;grid"
+   },
+   {
+    "type": "chunk",
+    "text": "-template-columns:repeat"
+   },
+   {
+    "type": "chunk",
+    "text": "(5,1fr);gap:4px;font:12p"
+   },
+   {
+    "type": "chunk",
+    "text": "x system-ui;padding:6px}"
+   },
+   {
+    "type": "chunk",
+    "text": ".d{color:#667085;text-al"
+   },
+   {
+    "type": "chunk",
+    "text": "ign:center}.b{grid-row:2"
+   },
+   {
+    "type": "chunk",
+    "text": ";color:#fff;border-radiu"
+   },
+   {
+    "type": "chunk",
+    "text": "s:8px;padding:18px 4px;t"
+   },
+   {
+    "type": "chunk",
+    "text": "ext-align:center;font-we"
+   },
+   {
+    "type": "chunk",
+    "text": "ight:600}</style><div cl"
+   },
+   {
+    "type": "chunk",
+    "text": "ass=\\\"w\\\"><div class=\\\"d"
+   },
+   {
+    "type": "chunk",
+    "text": "\\\">Mon</div><div class=\\"
+   },
+   {
+    "type": "chunk",
+    "text": "\"d\\\">Tue</div><div class"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"d\\\">Wed</div><div cla"
+   },
+   {
+    "type": "chunk",
+    "text": "ss=\\\"d\\\">Thu</div><div c"
+   },
+   {
+    "type": "chunk",
+    "text": "lass=\\\"d\\\">Fri</div><div"
+   },
+   {
+    "type": "chunk",
+    "text": " class=\\\"b\\\" style=\\\"gri"
+   },
+   {
+    "type": "chunk",
+    "text": "d-column:1;background:#4"
+   },
+   {
+    "type": "chunk",
+    "text": "f46e5\\\">CMPE 280</div><d"
+   },
+   {
+    "type": "chunk",
+    "text": "iv class=\\\"b\\\" style=\\\"g"
+   },
+   {
+    "type": "chunk",
+    "text": "rid-column:2;background:"
+   },
+   {
+    "type": "chunk",
+    "text": "#0f8a5f\\\">CMPE 281</div>"
+   },
+   {
+    "type": "chunk",
+    "text": "<div class=\\\"b\\\" style=\\"
+   },
+   {
+    "type": "chunk",
+    "text": "\"grid-column:3;backgroun"
+   },
+   {
+    "type": "chunk",
+    "text": "d:#4f46e5\\\">CMPE 280</di"
+   },
+   {
+    "type": "chunk",
+    "text": "v><div class=\\\"b\\\" style"
+   },
+   {
+    "type": "chunk",
+    "text": "=\\\"grid-column:4;backgro"
+   },
+   {
+    "type": "chunk",
+    "text": "und:#0f8a5f\\\">CMPE 281</"
+   },
+   {
+    "type": "chunk",
+    "text": "div><div class=\\\"b\\\" sty"
+   },
+   {
+    "type": "chunk",
+    "text": "le=\\\"grid-column:5;backg"
+   },
+   {
+    "type": "chunk",
+    "text": "round:#b45309\\\">CMPE 258"
+   },
+   {
+    "type": "chunk",
+    "text": "</div></div>\", \"This wee"
+   },
+   {
+    "type": "chunk",
+    "text": "k\", 120)\nunits = Metric("
+   },
+   {
+    "type": "chunk",
+    "text": "\"Units\", 9, \"+3 full-tim"
+   },
+   {
+    "type": "chunk",
+    "text": "e\")\ncourses = Table([\"Co"
+   },
+   {
+    "type": "chunk",
+    "text": "urse\", \"When\"], [[\"CMPE "
+   },
+   {
+    "type": "chunk",
+    "text": "280\", \"Mon/Wed 18:00\"], "
+   },
+   {
+    "type": "chunk",
+    "text": "[\"CMPE 281\", \"Tue/Thu 18"
+   },
+   {
+    "type": "chunk",
+    "text": ":00\"], [\"CMPE 258\", \"Fri"
+   },
+   {
+    "type": "chunk",
+    "text": " 15:00\"]])\ntitle = Text("
+   },
+   {
+    "type": "chunk",
+    "text": "\"Spring 2027 \u00b7 9 units\","
+   },
+   {
+    "type": "chunk",
+    "text": " \"h1\")\nactions = Badge(\""
+   },
+   {
+    "type": "chunk",
+    "text": "Plan complete: no confli"
+   },
+   {
+    "type": "chunk",
+    "text": "cts\", \"ok\")\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ }
+]

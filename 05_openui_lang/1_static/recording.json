@@ -1,0 +1,92 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "chunk",
+    "text": "root = CourseList([web, "
+   },
+   {
+    "type": "chunk",
+    "text": "cloud, note])\nweb = Cour"
+   },
+   {
+    "type": "chunk",
+    "text": "seCard(\"CMPE 280\", \"Web "
+   },
+   {
+    "type": "chunk",
+    "text": "UI Design and Developmen"
+   },
+   {
+    "type": "chunk",
+    "text": "t\", 3, \"Mon/Wed 18:00\", "
+   },
+   {
+    "type": "chunk",
+    "text": "12, false)\ncloud = Cours"
+   },
+   {
+    "type": "chunk",
+    "text": "eCard(\"CMPE 281\", \"Cloud"
+   },
+   {
+    "type": "chunk",
+    "text": " Technologies\", 3, \"Tue/"
+   },
+   {
+    "type": "chunk",
+    "text": "Thu 18:00\", 2, false)\nno"
+   },
+   {
+    "type": "chunk",
+    "text": "te = ConflictAlert(\"No t"
+   },
+   {
+    "type": "chunk",
+    "text": "ime conflicts between th"
+   },
+   {
+    "type": "chunk",
+    "text": "ese two \u00b7 6 units\", \"ok\""
+   },
+   {
+    "type": "chunk",
+    "text": ")"
+   },
+   {
+    "type": "chunk",
+    "text": "\n"
+   },
+   {
+    "type": "trace",
+    "text": "program valid"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action enroll CMPE 281: server code writes the new statements"
+   },
+   {
+    "type": "chunk",
+    "text": "cloud = CourseCard(\"CMPE 281\", \"Cloud Technologies\", 3, \"Tue/Thu 18:00\", 1, true)\n"
+   },
+   {
+    "type": "chunk",
+    "text": "note = ConflictAlert(\"Enrolled in CMPE 281 \u00b7 1 seat(s) left\", \"ok\")\n"
+   },
+   {
+    "type": "end"
+   }
+  ]
+ }
+]

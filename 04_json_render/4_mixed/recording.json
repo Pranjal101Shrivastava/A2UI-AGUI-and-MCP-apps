@@ -1,0 +1,168 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "spec",
+    "spec": {
+     "root": "page",
+     "elements": {
+      "page": {
+       "type": "Column",
+       "children": [
+        "title",
+        "kpis",
+        "heat",
+        "plan"
+       ]
+      },
+      "title": {
+       "type": "Text",
+       "props": {
+        "text": "Rush hours \u00b7 week 47",
+        "variant": "h1"
+       }
+      },
+      "kpis": {
+       "type": "Row",
+       "children": [
+        "peak",
+        "cups"
+       ]
+      },
+      "peak": {
+       "type": "Metric",
+       "props": {
+        "label": "Peak hour",
+        "value": {
+         "$state": "/peak"
+        },
+        "delta": "60 cups/h on Thu\u2013Fri"
+       }
+      },
+      "cups": {
+       "type": "Metric",
+       "props": {
+        "label": "Cups this week",
+        "value": {
+         "$state": "/cups"
+        }
+       }
+      },
+      "heat": {
+       "type": "GeneratedView",
+       "props": {
+        "title": "Cups per hour (model-drawn)",
+        "html": "<style>.g{display:grid;grid-template-columns:40px repeat(6,1fr);gap:4px;font:12px system-ui;padding:6px}\n.c{border-radius:6px;padding:8px 0;text-align:center;color:#fff;background:rgba(79,70,229,calc(.15 + var(--v)*.85))}\n.c:hover{outline:2px solid #1f2430} .h{color:#667085;text-align:center}</style>\n<div class=\"g\"><div></div><div class=\"h\">8:00</div><div class=\"h\">9:00</div><div class=\"h\">10:00</div><div class=\"h\">11:00</div><div class=\"h\">12:00</div><div class=\"h\">13:00</div><div class=\"h\">Mon</div><div class=\"c\" style=\"--v:0.3\" title=\"Mon 8:00 \u00b7 18 cups\">18</div><div class=\"c\" style=\"--v:0.9\" title=\"Mon 9:00 \u00b7 54 cups\">54</div><div class=\"c\" style=\"--v:0.6\" title=\"Mon 10:00 \u00b7 36 cups\">36</div><div class=\"c\" style=\"--v:0.2\" title=\"Mon 11:00 \u00b7 12 cups\">12</div><div class=\"c\" style=\"--v:0.4\" title=\"Mon 12:00 \u00b7 24 cups\">24</div><div class=\"c\" style=\"--v:0.1\" title=\"Mon 13:00 \u00b7 6 cups\">6</div><div class=\"h\">Tue</div><div class=\"c\" style=\"--v:0.4\" title=\"Tue 8:00 \u00b7 24 cups\">24</div><div class=\"c\" style=\"--v:0.8\" title=\"Tue 9:00 \u00b7 48 cups\">48</div><div class=\"c\" style=\"--v:0.7\" title=\"Tue 10:00 \u00b7 42 cups\">42</div><div class=\"c\" style=\"--v:0.3\" title=\"Tue 11:00 \u00b7 18 cups\">18</div><div class=\"c\" style=\"--v:0.5\" title=\"Tue 12:00 \u00b7 30 cups\">30</div><div class=\"c\" style=\"--v:0.2\" title=\"Tue 13:00 \u00b7 12 cups\">12</div><div class=\"h\">Wed</div><div class=\"c\" style=\"--v:0.2\" title=\"Wed 8:00 \u00b7 12 cups\">12</div><div class=\"c\" style=\"--v:0.7\" title=\"Wed 9:00 \u00b7 42 cups\">42</div><div class=\"c\" style=\"--v:0.5\" title=\"Wed 10:00 \u00b7 30 cups\">30</div><div class=\"c\" style=\"--v:0.2\" title=\"Wed 11:00 \u00b7 12 cups\">12</div><div class=\"c\" style=\"--v:0.3\" title=\"Wed 12:00 \u00b7 18 cups\">18</div><div class=\"c\" style=\"--v:0.1\" title=\"Wed 13:00 \u00b7 6 cups\">6</div><div class=\"h\">Thu</div><div class=\"c\" style=\"--v:0.5\" title=\"Thu 8:00 \u00b7 30 cups\">30</div><div class=\"c\" style=\"--v:1.0\" title=\"Thu 9:00 \u00b7 60 cups\">60</div><div class=\"c\" style=\"--v:0.8\" title=\"Thu 10:00 \u00b7 48 cups\">48</div><div class=\"c\" style=\"--v:0.4\" title=\"Thu 11:00 \u00b7 24 cups\">24</div><div class=\"c\" style=\"--v:0.6\" title=\"Thu 12:00 \u00b7 36 cups\">36</div><div class=\"c\" style=\"--v:0.2\" title=\"Thu 13:00 \u00b7 12 cups\">12</div><div class=\"h\">Fri</div><div class=\"c\" style=\"--v:0.6\" title=\"Fri 8:00 \u00b7 36 cups\">36</div><div class=\"c\" style=\"--v:1.0\" title=\"Fri 9:00 \u00b7 60 cups\">60</div><div class=\"c\" style=\"--v:0.9\" title=\"Fri 10:00 \u00b7 54 cups\">54</div><div class=\"c\" style=\"--v:0.5\" title=\"Fri 11:00 \u00b7 30 cups\">30</div><div class=\"c\" style=\"--v:0.8\" title=\"Fri 12:00 \u00b7 48 cups\">48</div><div class=\"c\" style=\"--v:0.3\" title=\"Fri 13:00 \u00b7 18 cups\">18</div></div>",
+        "height": 230
+       }
+      },
+      "plan": {
+       "type": "Button",
+       "props": {
+        "label": "Plan tomorrow's prep",
+        "action": "plan_prep",
+        "variant": "primary"
+       }
+      }
+     },
+     "state": {
+      "peak": "9:00",
+      "cups": 385
+     }
+    }
+   }
+  ]
+ },
+ {
+  "api": "action",
+  "method": "",
+  "events": [
+   {
+    "type": "trace",
+    "text": "action plan_prep: model answers with patches"
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/prep",
+     "value": {
+      "type": "Card",
+      "props": {
+       "title": "Prep for Friday"
+      },
+      "children": [
+       "prep_table",
+       "prep_note"
+      ]
+     }
+    }
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/prep_table",
+     "value": {
+      "type": "Table",
+      "props": {
+       "columns": [
+        "Item",
+        "Amount",
+        "Ready by"
+       ],
+       "rows": [
+        [
+         "Cold brew",
+         "12 L",
+         "7:30"
+        ],
+        [
+         "Espresso beans",
+         "2.5 kg",
+         "7:45"
+        ],
+        [
+         "Milk",
+         "16 L",
+         "7:45"
+        ]
+       ]
+      }
+     }
+    }
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "add",
+     "path": "/elements/prep_note",
+     "value": {
+      "type": "Badge",
+      "props": {
+       "text": "2 staff from 8:45 to 10:15",
+       "tone": "info"
+      }
+     }
+    }
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "replace",
+     "path": "/elements/page/children/3",
+     "value": "prep"
+    }
+   },
+   {
+    "type": "patch",
+    "op": {
+     "op": "remove",
+     "path": "/elements/plan"
+    }
+   }
+  ]
+ }
+]

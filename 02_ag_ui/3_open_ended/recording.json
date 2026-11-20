@@ -1,0 +1,158 @@
+[
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_309122c9",
+    "runId": "run_1795209360122"
+   },
+   {
+    "type": "TOOL_CALL_START",
+    "toolCallId": "call_1_0",
+    "toolCallName": "render_html"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "{\"html\": \"<style>\\n body{background:linear-gradient(160deg,#fdf2f8,#eef2ff)} .p{font:14px Georgia,serif;padding:18px 22px;color:#2d1b3d}\\n h2{font-size:26px;mar"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "gin:0;letter-spacing:.02em} .sub{color:#8b5a7a;margin-bottom:12px}\\n .day{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:10px 0;border-top:1px das"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "hed #d8b4d0}\\n .d{font:700 13px system-ui;color:#be185d} .spot{display:inline-block;background:#fff;border-radius:99px;padding:2px 9px;margin:3px 4px 0 0;\\n box"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "-shadow:0 1px 2px #0001;font:12px system-ui} button{margin-top:12px;font:600 13px system-ui;padding:9px 16px;border:0;\\n border-radius:99px;background:#be185d;c"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "olor:#fff;cursor:pointer} .sun{float:right;font-size:38px}\\n</style><div class=\\\"p\\\"><span class=\\\"sun\\\">\u26e9\ufe0f</span><h2>Kyoto, slowly</h2><div class=\\\"sub\\\">three"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": " days \u00b7 temples, lanes, tea</div>\\n<div class=\\\"day\\\"><div class=\\\"d\\\">SAT</div><div>Early light at Kiyomizu-dera, then the stone lanes.<br>\\n<span class=\\\"spot"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "\\\">Kiyomizu-dera</span><span class=\\\"spot\\\">Sannenzaka</span><span class=\\\"spot\\\">Gion at dusk</span></div></div>\\n<div class=\\\"day\\\"><div class=\\\"d\\\">SUN</div>"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "<div>Rain is likely: keep it under a roof.<br>\\n<span class=\\\"spot\\\">Nishiki Market</span><span class=\\\"spot\\\">National Museum</span><span class=\\\"spot\\\">Tea ce"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "remony</span></div></div>\\n<div class=\\\"day\\\"><div class=\\\"d\\\">MON</div><div>Sunrise gates, then deer.<br>\\n<span class=\\\"spot\\\">Fushimi Inari</span><span class"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "=\\\"spot\\\">Nara Park</span></div></div>\\n<button id=\\\"save\\\">Save to my trips</button></div>\\n<script>document.getElementById(\\\"save\\\").onclick = () => genux.sen"
+   },
+   {
+    "type": "TOOL_CALL_ARGS",
+    "toolCallId": "call_1_0",
+    "delta": "d(\\\"action\\\", {name: \\\"save_trip\\\"});</script>\"}"
+   },
+   {
+    "type": "TOOL_CALL_END",
+    "toolCallId": "call_1_0"
+   },
+   {
+    "type": "TOOL_CALL_RESULT",
+    "messageId": "msg_f5678b54",
+    "toolCallId": "call_1_0",
+    "role": "tool",
+    "content": "shown in a sandbox (1579 chars)"
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_bf2a62a7",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_bf2a62a7",
+    "delta": "Here is a one-page"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_bf2a62a7",
+    "delta": " plan. Sunday stay"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_bf2a62a7",
+    "delta": "s indoors because "
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_bf2a62a7",
+    "delta": "of the rain."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_bf2a62a7"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_309122c9",
+    "runId": "run_1795209360122"
+   }
+  ]
+ },
+ {
+  "api": "run",
+  "method": "",
+  "events": [
+   {
+    "type": "RUN_STARTED",
+    "threadId": "thread_309122c9",
+    "runId": "run_1795209360746"
+   },
+   {
+    "type": "TEXT_MESSAGE_START",
+    "messageId": "msg_75485ae6",
+    "role": "assistant"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_75485ae6",
+    "delta": "Saved. You will fi"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_75485ae6",
+    "delta": "nd 'Kyoto, slowly'"
+   },
+   {
+    "type": "TEXT_MESSAGE_CONTENT",
+    "messageId": "msg_75485ae6",
+    "delta": " under My trips."
+   },
+   {
+    "type": "TEXT_MESSAGE_END",
+    "messageId": "msg_75485ae6"
+   },
+   {
+    "type": "RUN_FINISHED",
+    "threadId": "thread_309122c9",
+    "runId": "run_1795209360746"
+   }
+  ]
+ }
+]

@@ -1,0 +1,15 @@
+{
+  "root": "page",
+  "elements": {
+    "page": {"type": "Column", "children": ["title", "kpis", "chart", "highlight", "items", "inventory"]},
+    "title": {"type": "Text", "props": {"text": {"$state": "/title"}, "variant": "h1"}},
+    "kpis": {"type": "Row", "children": ["revenue", "cups", "top"]},
+    "revenue": {"type": "Metric", "props": {"label": "Revenue this week", "value": {"$state": "/revenue"}}},
+    "cups": {"type": "Metric", "props": {"label": "Cups sold", "value": {"$state": "/cups"}}},
+    "top": {"type": "Metric", "props": {"label": "Best seller", "value": {"$state": "/top"}}},
+    "chart": {"type": "BarChart", "props": {"title": "Cups per day", "labels": {"$state": "/days"}, "values": {"$state": "/cups_by_day"}}},
+    "highlight": {"type": "Text", "props": {"text": {"$state": "/highlight"}, "variant": "muted"}},
+    "items": {"type": "Table", "props": {"columns": ["Drink", "Cups", "Price"], "rows": {"$state": "/items"}}},
+    "inventory": {"type": "Button", "props": {"label": "Check inventory", "action": "show_inventory"}}
+  }
+}

@@ -1,0 +1,19 @@
+$ python 01_a2ui/3_open_ended/demo.py
+
+POST api/run  {"prompt":"Show me a map of the study rooms so I can pick one"}
+  <- createSurface {"surfaceId":"floor_plan","catalogId":"genux.local:a2ui/html-only-v1"}
+  <- trace {"text":"content policy / validator: root: external <script src> is not allowed; root: network URLs are not allowed"}
+  <- updateComponents {"surfaceId":"floor_plan","components":[{"id":"root","component":"HtmlFrame","html":"<style>\n .plan{font:13px system-ui;padding:…
+POST api/action  {"version":"v0.9","action":{"name":"select_room","surfaceId":"floor_plan","sourceComponentId":"root","timesta…
+  <- trace {"text":"action select_room from the sandbox, context={\"room\": \"B12\"}"}
+  <- updateComponents {"surfaceId":"floor_plan","components":[{"id":"root","component":"HtmlFrame","html":"<style>.r{font:14px system-ui;padding:10px}.…
+POST api/action  {"version":"v0.9","action":{"name":"book_room","surfaceId":"floor_plan","sourceComponentId":"root","timestamp…
+  <- trace {"text":"action book_room from the sandbox, context={\"room\": \"B12\", \"time\": \"Tomorrow 14:00-16:00\"}"}
+  <- updateComponents {"surfaceId":"floor_plan","components":[{"id":"root","component":"HtmlFrame","html":"<style>.ok{font:15px system-ui;padding:16px;…
+
+model output size for one screen (tokens, estimated):
+  static (tool call args)           32
+  declarative (A2UI JSONL)         300
+  open-ended (HtmlFrame HTML)      407
+
+screenshots: demo_before.png, demo_room.png, demo.png   (3 request(s), 2.1s)

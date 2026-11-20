@@ -1,0 +1,13 @@
+{
+  "root": "page",
+  "elements": {
+    "page": {"type": "Card", "props": {"title": "Inventory"}, "children": ["beans", "milk", "cups", "alert", "actions"]},
+    "beans": {"type": "Progress", "props": {"label": "Coffee beans", "value": {"$state": "/beans_pct"}}},
+    "milk": {"type": "Progress", "props": {"label": "Milk", "value": {"$state": "/milk_pct"}}},
+    "cups": {"type": "Progress", "props": {"label": "Paper cups", "value": {"$state": "/cups_pct"}}},
+    "alert": {"type": "Badge", "props": {"text": {"$state": "/alert"}, "tone": "warn"}},
+    "actions": {"type": "Row", "children": ["reorder", "back"]},
+    "reorder": {"type": "Button", "props": {"label": "Reorder 10 kg beans", "action": "reorder_beans", "variant": "primary"}},
+    "back": {"type": "Button", "props": {"label": "Back to sales", "action": "show_sales"}}
+  }
+}
